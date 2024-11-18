@@ -1,0 +1,185 @@
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+  rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* Importer la police */
+  body {
+    background: linear-gradient(135deg, #444, #222);
+    /* Gradient subtil */
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .login-box {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    /* Bordures légèrement plus arrondies */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+    /* Ombre plus prononcée */
+    text-align: center;
+    padding: 30px 40px;
+    /* Plus d'espace à l'intérieur */
+    width: 350px;
+    /* Augmenter la largeur */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Animation */
+  }
+
+  .login-box:hover {
+    transform: scale(1.03);
+    /* Effet de zoom au survol */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+    /* Ombre plus grande */
+  }
+
+  .login-box h1 {
+    font-size: 28px;
+    /* Texte légèrement plus grand */
+    margin-bottom: 25px;
+    color: #111;
+    text-transform: uppercase;
+  }
+
+  .input-group {
+    margin-bottom: 15px;
+  }
+
+  .input-group label {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    /* Bordures plus arrondies */
+    padding: 10px 12px;
+    /* Plus d'espace dans les champs */
+    background: #f5f5f5;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  .input-group label:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    /* Effet de lumière au survol */
+    border-color: #ff4d4d;
+    /* Changement de couleur */
+  }
+
+  .input-group .icon {
+    font-size: 18px;
+    margin-right: 10px;
+    color: #888;
+  }
+
+  .input-group input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 18px;
+    /* Texte légèrement plus grand */
+    background: transparent;
+  }
+
+  .login-btn {
+    background: linear-gradient(45deg, #ff4d4d, #ff007f);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    /* Bouton plus arrondi */
+    padding: 12px 25px;
+    /* Bouton plus grand */
+    font-size: 18px;
+    /* Texte du bouton plus grand */
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .login-btn:hover {
+    background: linear-gradient(45deg, #ff007f, #ff4d4d);
+    box-shadow: 0 4px 15px rgba(255, 0, 127, 0.5);
+    /* Éclat au survol */
+    transform: translateY(-3px);
+    /* Légère élévation */
+  }
+
+  @media screen and (max-width: 600px) {
+    .login-box {
+      width: 90%;
+      padding: 15px 20px;
+    }
+  }
+</style>
+</head>
+
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <h1>ACCOUNT LOGIN</h1>
+
+      <!-- affichage les resultats de requette -->
+      <div class="container">
+        <!-- Afficher les erreurs -->
+        <?php if (!empty($_SESSION['errors'])): ?>
+          <div class="alert alert-danger">
+            <ul>
+              <?php foreach ($_SESSION['errors'] as $error): ?>
+                <li><?= htmlspecialchars($error) ?></li>
+              <?php endforeach; ?>
+            </ul>
+          </div>
+          <?php unset($_SESSION['errors']); ?>
+        <?php endif; ?>
+
+
+      </div>
+
+      <style>
+        .alert {
+          padding: 1px;
+          margin-bottom: 10px;
+          border-radius: 5px;
+          font-weight: bold;
+          color: #c0392b;
+        }
+      </style>
+      <!-- *********************** -->
+
+      <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
+        <input type="hidden" name="idAdmin" value="<?= $idAdmin ?>">
+        <div class="input-group">
+          <label for="username">
+            <span class="icon">👤</span>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="User name" />
+          </label>
+        </div>
+        <div class="input-group">
+          <label for="password">
+            <span class="icon">🔒</span>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password" />
+          </label>
+        </div>
+        <button type="submit" class="login-btn">LOGIN</button>
+      </form>
+    </div>
+  </div>
