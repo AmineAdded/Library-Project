@@ -1,0 +1,461 @@
+<!-- ======= Styles ====== -->
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/styleButtonAjouter.css">
+
+<style>
+    /* Button update et supprimer */
+    .ButtonsUpSupp a {
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        display: inline-flex;
+        align-items: center;
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Bouton Update (jaune) */
+    .btn-update {
+        background-color: #f1c40f;
+        color: #fff;
+    }
+
+    .btn-update:hover {
+        background-color: #f39c12;
+        transform: scale(1.05);
+    }
+
+    /* Bouton Delete (rouge) */
+    .btn-delete {
+        background-color: #e74c3c;
+        color: #fff;
+    }
+
+    .btn-delete:hover {
+        background-color: #c0392b;
+        transform: scale(1.05);
+    }
+
+    /* Style pour les icônes */
+    a i {
+        margin-right: 5px;
+    }
+</style>
+
+<!-- =============== Navigation ================ -->
+<div class="container">
+    <div class="navigation">
+        <ul>
+            <li>
+                <div style="color: white; margin-left: 60px; font-size: 20px;" class="bienvenue">
+                    <img class='img-circle profile_img' height=120 width=120 src=<?= $result1['picture'] ?>>
+                    </br></br>
+                    <h3 class="bienv">Welcome <span style="text-align: center;position: relative;left: -20px;"> <?= $result1['username'] ?> </span></h3>
+                </div>
+                <br><br>
+            </li>
+            <li>
+                <a href="index.php?idAdmin=<?= $_GET['idAdmin'] ?>">
+                    <span class="icon">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </span>
+                    <span class="title">Accueil</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="DetailsAdherent.php?idAdmin=<?= $_GET['idAdmin'] ?>">
+                    <span class="icon">
+                        <ion-icon name="people-outline"></ion-icon>
+                    </span>
+                    <span class="title">Adhérants</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="DetailsOuvrage.php?idAdmin=<?= $_GET['idAdmin'] ?>">
+                    <span class="icon">
+                        <ion-icon name="book-outline"></ion-icon>
+                    </span>
+                    <span class="title">Ouvrages</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="folder-open-outline"></ion-icon>
+                    </span>
+                    <span class="title">Emprunt</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="stats-chart-outline"></ion-icon>
+                    </span>
+                    <span class="title">Satistique</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="Feedback.php?idAdmin=<?= $_GET['idAdmin'] ?>">
+                    <span class="icon">
+                        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+                    </span>
+                    <span class="title">Feedback</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="AfficherAdmin.php" id="logoutLink">
+                    <span class="icon">
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </span>
+                    <span class="title">Sign Out</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ========================= Main ==================== -->
+    <div class="main">
+        <div class="topbar">
+            <div class="toggle">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+            <div class="search">
+                <label>
+                    <input type="text" placeholder="Search here" id="searchInput">
+                    <ion-icon name="search-outline"></ion-icon>
+                </label>
+            </div>
+            <div>
+                <button class="button">
+                    <svg class="bell" viewBox="0 0 448 512">
+                        <path
+                            d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z">
+                        </path>
+                    </svg>
+                    Notifications
+                    <div class="arrow">›</div>
+                    <div class="dot"></div>
+                </button>
+            </div>
+
+            <div class="container1">
+                <!-- BEGIN NAV -->
+                <nav class="navTop row">
+                    <div class="menuIcon fl"><span class="fa fa-user"></span></div>
+                    <div class="account fr">
+                        <div class="name has-submenu">Admin<span class="fa fa-angle-down"></span></div>
+                        <ul class="accountLinks submenu">
+                            <li><a href="ChangerMotDePasse.php?idAdmin=<?= $_GET['idAdmin'] ?>">Changer le mot de passe </a></li>
+                            <li><a href="AfficherAdmin.php" id="logoutLinkBoard">Déconnecter<span
+                                        class="fa fa-sign-out fr"></span></a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- ======================= Cards ================== -->
+        <div class="cardBox">
+            <div class="card">
+                <div>
+                    <div class="numbers"><?= $result['total'] ?></div>
+                    <div class="cardName">Adhérents</div>
+                </div>
+
+                <div class="iconBx">
+                    <ion-icon name="eye-outline"></ion-icon>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="numbers">80</div>
+                    <div class="cardName">Livres empruntés</div>
+                </div>
+
+                <div class="iconBx">
+                    <ion-icon name="cart-outline"></ion-icon>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="numbers"><?= $resultFeed['total'] ?></div>
+                    <div class="cardName">Comments</div>
+                </div>
+
+                <div class="iconBx">
+                    <ion-icon name="chatbubbles-outline"></ion-icon>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="numbers">$7,842</div>
+                    <div class="cardName">Revenus</div>
+                </div>
+
+                <div class="iconBx">
+                    <ion-icon name="cash-outline"></ion-icon>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================ Order Details List ================= -->
+        <div class="details">
+            <div class="recentOrders">
+                <div class="cardHeader">
+                    <h2>Liste des ouvrages</h2>
+                    <a href="AjoutOuvrage.php?idAdmin=<?= $_GET['idAdmin'] ?>">
+                        <button class="Btn">
+                            <div class="sign">+</div>
+
+                            <div class="text">Ajouter</div>
+                        </button>
+                    </a>
+                    <!-- <a href="#" class="btn">View All</a> -->
+                </div>
+
+                <!-- ================ LES TABLEAUX ICI ================= -->
+
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Photo de couverture</td>
+                            <td>Titre</td>
+                            <td>Auteur</td>
+                            <td>Quantité</td>
+                            <td>Catégorie</td>
+                            <td>Frais</td>
+                        </tr>
+                    </thead>
+                    <tbody id="contenu">
+                        <?php foreach ($ouvrages as $ouvrage): ?>
+                            <tr>
+                                <td><img src="<?= $ouvrage['picture'] ?>" class="ImgAdherent"></td>
+                                <td><?= $ouvrage['titre'] ?></td>
+                                <td><?= $ouvrage['auteur'] ?></td>
+                                <td><?= $ouvrage['quantite'] ?></td>
+                                <td><?= $ouvrage['categorie'] ?></td>
+                                <td class="Mdps"><?= $ouvrage['frais'] ?></td>
+
+                                <td>
+                                    <div class="ButtonsUpSupp">
+                                        <a href="UpdateOuvrage.php?idBook=<?= $ouvrage['idBook'] ?>&idAdmin=<?= $_GET['idAdmin'] ?>" class="btn-update"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="DeleteOuvrage.php?idBook=<?= $ouvrage['idBook'] ?>&idAdmin=<?= $_GET['idAdmin'] ?>" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Logout Modal -->
+<div id="logoutModal" class="modal">
+    <div class="modal-content">
+        <h3>Confirmation de Déconnexion</h3>
+        <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
+        <div class="modal-buttons">
+            <button id="confirmLogout" class="btn-yes">Oui</button>
+            <button id="cancelLogout" class="btn-no">Non</button>
+        </div>
+    </div>
+</div>
+<style>
+    /* Modal Style */
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        z-index: 999;
+        /* Above other elements */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Black background with opacity */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        max-width: 400px;
+        margin: auto;
+    }
+
+    .modal-content h3 {
+        margin-top: 0;
+    }
+
+    .modal-buttons {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+
+    .btn-yes {
+        background-color: #e74c3c;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn-yes:hover {
+        background-color: #c0392b;
+    }
+
+    .btn-no {
+        background-color: #95a5a6;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn-no:hover {
+        background-color: #7f8c8d;
+    }
+</style>
+<script>
+    // Select modal elements
+    const logoutModal = document.getElementById('logoutModal');
+    const confirmLogout = document.getElementById('confirmLogout');
+    const cancelLogout = document.getElementById('cancelLogout');
+    const logoutLink = document.getElementById('logoutLink');
+    const logoutLinkBoard = document.getElementById('logoutLinkBoard');
+
+    // Open modal when clicking logout
+    logoutLink.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent default link behavior
+        logoutModal.style.display = 'flex'; // Show modal
+    });
+
+    // Open modal when clicking logout
+    logoutLinkBoard.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent default link behavior
+        logoutModal.style.display = 'flex'; // Show modal
+    });
+
+    // Close modal when clicking "Non"
+    cancelLogout.addEventListener('click', function() {
+        logoutModal.style.display = 'none';
+    });
+
+    // Confirm logout action
+    confirmLogout.addEventListener('click', function() {
+        window.location.href = logoutLink.href; // Redirect to logout page
+    });
+
+    // Confirm logout action
+    confirmLogout.addEventListener('click', function() {
+        window.location.href = logoutLinkBoard.href; // Redirect to logout page
+    });
+
+    // Close modal when clicking outside of modal content
+    window.addEventListener('click', function(e) {
+        if (e.target == logoutModal) {
+            logoutModal.style.display = 'none';
+        }
+    });
+</script>
+
+<!-- =========== Scripts =========  -->
+<script src="assets/js/main.js"></script>
+
+<!-- ====== ionicons ======= -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script>
+    // Fonction pour gérer le menu et sous-menu
+    function elm(x) {
+        var target = x.substring(1);
+        var type = x.charAt(0);
+        if (type == '#') {
+            return document.getElementById(target);
+        } else if (type == '.') {
+            return document.getElementsByClassName(target);
+        } else {
+            return document.getElementsByTagName(x);
+        }
+    }
+
+    // Gestion des sous-menus
+    if (elm(".has-submenu")) {
+        for (var i = 0, len = elm(".has-submenu").length; i < len; i++) {
+            elm(".has-submenu")[i].onclick = function(e) {
+                e.stopPropagation();
+                bascule(this.nextElementSibling);
+            }
+        }
+    }
+
+    // Gestion du clic sur l'icône du menu
+    if (elm(".menuIcon")) {
+        elm(".menuIcon")[0].onclick = function() {
+            elm(".container")[0].classList.toggle("is-click");
+        };
+    }
+
+    // Fonction pour basculer l'affichage des éléments
+    function bascule(x) {
+        var css = window.getComputedStyle(x, null);
+        if (css.getPropertyValue("display") == 'none') {
+            x.style.display = 'block';
+        } else {
+            x.style.display = 'none';
+        }
+    }
+</script>
+
+<script>
+    //Recherche
+    document.getElementById('searchInput').addEventListener('input', function() {
+        let searchTerm = this.value.toLowerCase();  // Obtenir la valeur du champ de recherche
+        let rows = document.querySelectorAll('#contenu tr');  // Obtenir toutes les lignes du tableau
+
+        rows.forEach(function(row) {
+            let cells = row.getElementsByTagName('td');
+            let found = false;
+
+            // Vérifier chaque cellule de la ligne
+            for (let i = 0; i < cells.length; i++) {
+                if (cells[i].innerText.toLowerCase().includes(searchTerm)) {
+                    found = true;
+                    break;  // Si on trouve une correspondance, on sort de la boucle
+                }
+            }
+
+            // Afficher ou cacher la ligne en fonction du résultat
+            if (found) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+</script>

@@ -1,0 +1,111 @@
+<link rel="stylesheet" href="assets/css/styleChangerPassword.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<h1 id="err"></h1>
+<div class="section">
+    <div class="header">
+        - Changer le mot de passe -
+    </div>
+    <!-- affichage les resultats de requette -->
+    <div class="container">
+        <!-- Afficher les erreurs -->
+        <?php if (!empty($errors)): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <?php foreach ($errors as $error): ?>
+                        <li><?= htmlspecialchars($error) ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
+        
+    </div>
+
+    <style>
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #ffaaa4;
+
+        }
+    </style>
+    <!-- *********************** -->
+    <form class="login_form" id="form" aria-label="Login form" action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+        <input type="hidden" name="idAdmin" value="<?= $idAdmin ?>">
+        <div class="first-box">
+            <div class="form-group">
+                <i class="fa fa-unlock-alt"></i>
+                <input type="password" id="currentPassword" placeholder="Mot de passe actuel" name="password" aria-required="true" />
+                <i class="fa fa-eye-slash icon" id="toggleCurrentPassword"></i>
+            </div>
+        </div>
+        <div class="first-box">
+            <div class="form-group">
+                <i class="fa fa-unlock-alt"></i>
+                <input type="password" id="newPassword" placeholder="Nouveau mot de passe" name="newPassword" aria-required="true" />
+                <i class="fa fa-eye-slash icon" id="toggleNewPassword"></i>
+            </div>
+        </div>
+        <div class="first-box">
+            <div class="form-group">
+                <i class="fa fa-unlock-alt"></i>
+                <input type="password" id="confirmPassword" placeholder="Confirmer mot de passe" name="confirmPassword" aria-required="true" />
+                <i class="fa fa-eye-slash icon" id="toggleConfirmPassword"></i>
+            </div>
+        </div>
+
+
+        <div class="button">
+            <button type="submit" style="color: white">Changer</button>
+        </div>
+    </form>
+
+</div>
+
+<div class="quiz-exit">
+    <a href="index.php?idAdmin=<?=$idAdmin?>"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill: #635147;">
+            <path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"></path>
+        </svg></a>
+</div>
+
+<script>
+    /*effacement de l'affichage des erreurs apres quelque instants */
+    setTimeout(() => {
+        document.querySelectorAll('.alert').forEach(alert => alert.style.display = 'none');
+    }, 5000);
+
+    function togglePasswordVisibility(passwordField, toggleIcon) {
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            toggleIcon.classList.remove('fa-eye-slash');
+            toggleIcon.classList.add('fa-eye');
+        } else {
+            passwordField.type = "password";
+            toggleIcon.classList.remove('fa-eye');
+            toggleIcon.classList.add('fa-eye-slash');
+        }
+    }
+
+    const currentPassword = document.querySelector('#currentPassword');
+    const newPassword = document.querySelector('#newPassword');
+    const confirmPassword = document.querySelector('#confirmPassword');
+
+    const toggleCurrentPassword = document.querySelector('#toggleCurrentPassword');
+    const toggleNewPassword = document.querySelector('#toggleNewPassword');
+    const toggleConfirmPassword = document.querySelector('#toggleConfirmPassword');
+
+    // Ajouter des événements de clic pour chaque icône de basculement
+    toggleCurrentPassword.addEventListener('click', function() {
+        togglePasswordVisibility(currentPassword, toggleCurrentPassword);
+    });
+
+    toggleNewPassword.addEventListener('click', function() {
+        togglePasswordVisibility(newPassword, toggleNewPassword);
+    });
+
+    toggleConfirmPassword.addEventListener('click', function() {
+        togglePasswordVisibility(confirmPassword, toggleConfirmPassword);
+    });
+</script>

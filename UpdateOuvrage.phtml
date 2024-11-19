@@ -1,0 +1,209 @@
+
+<div class="form-container">
+    <h2>Modifier un Livre</h2>
+    <form id="bookForm" onsubmit="return validateForm()" method="post" action="<?= $_SERVER['PHP_SELF']?>" enctype="multipart/form-data">
+        <label for="titre">Titre</label>
+        <input type="text" id="titre" name="titre" placeholder="Entrez le titre du livre" required value="<?= $ouvrages['titre'] ?>">
+        <input type="hidden" name="idBook" value="<?=$ouvrages['idBook']?>">
+
+        <input type="hidden" name="idAdmin" value="<?=$idAdmin?>">
+
+        <label for="auteur">Auteur</label>
+        <input type="text" id="auteur" name="auteur" placeholder="Entrez le nom de l'auteur" required value="<?= $ouvrages['auteur'] ?>">
+
+        <label for="quantite">Quantité</label>
+        <input type="number" id="quantite" name="quantite" placeholder="Entrez la quantité" required min="1" value="<?= intval($ouvrages['quantite']) ?>">
+
+        <label for="categorie">Catégorie</label>
+        <input type="text" id="categorie" name="categorie" placeholder="Entrez la catégorie" required  value="<?= $ouvrages['categorie'] ?>">
+
+        <label for="frais">Frais</label>
+        <input type="number" id="frais" name="frais" placeholder="Entrez les frais" required min="0" step="0.01" value="<?= intval($ouvrages['frais']) ?>">
+
+        <div class="flex items-center justify-between mt-3">
+                <label class="text-base font-medium text-gray-900">
+                Cover Picture
+                </label>
+        </div>
+        <div class="mt-2">
+                <input
+                class="file-input w-full max-w-xs"
+                type="hidden"
+                name="current_picture"
+                 value="<?= $ouvrages['picture'] ?>"
+                />
+                <input
+                class="file-input w-full max-w-xs"
+                type="file"
+                name="picture"
+                />
+        </div>
+
+        <button type="submit" style="margin-top: 10px;">Modifier le Livre</button>
+    </form>
+</div>
+<div class="quiz-exit">
+    <a href="DetailsOuvrage.php"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill: #635147;">
+            <path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"></path>
+        </svg></a>
+</div>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: url("assets/imgs/Background.webp");
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-size: 100%;
+        backdrop-filter: blur(5px); /* Blur effect */
+        -webkit-backdrop-filter: blur(5px); /* Safari support */
+    }
+
+    .form-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+        width: 100%;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #c35047;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    .error {
+        color: #ff0000;
+        font-size: 12px;
+        margin-top: -10px;
+        margin-bottom: 10px;
+    }
+
+    .quiz-exit {
+        position: absolute;
+        top: 0;
+        left: 1rem;
+        margin: 10px;
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        padding: 0.5rem;
+        border-radius: 50%;
+        border: 2px solid #635147;
+        ;
+    }
+
+    .quiz-exit:hover {
+        cursor: pointer;
+        box-shadow: 0 0.4rem 1.4rem 0 #635147;
+        ;
+        transform: translateY(-0.1rem);
+        transition: transform 150ms;
+    }
+
+    a {
+        text-decoration: none;
+        color: #635147;
+    }
+</style>
+
+<script>
+    function validateForm() {
+        let isValid = true;
+        const titre = document.getElementById('titre').value.trim();
+        const auteur = document.getElementById('auteur').value.trim();
+        const quantite = document.getElementById('quantite').value.trim();
+        const categorie = document.getElementById('categorie').value.trim();
+        const frais = document.getElementById('frais').value.trim();
+        const picture = document.getElementById('picture').value.trim();
+
+        // Réinitialiser les messages d'erreur
+        document.querySelectorAll('.error').forEach(e => e.remove());
+
+        // Vérification des champs
+        if (titre === "") {
+            showError('titre', "Le titre est requis.");
+            isValid = false;
+        }
+        if (auteur === "") {
+            showError('auteur', "L'auteur est requis.");
+            isValid = false;
+        }
+        if (quantite === "" || quantite <= 0) {
+            showError('quantite', "Veuillez entrer une quantité valide.");
+            isValid = false;
+        }
+        if (categorie === "") {
+            showError('categorie', "La catégorie est requise.");
+            isValid = false;
+        }
+        if (frais === "" || frais < 0) {
+            showError('frais', "Veuillez entrer un montant de frais valide.");
+            isValid = false;
+        }
+        if (picture === "" || !isValidURL(picture)) {
+            showError('picture', "Veuillez entrer une URL valide pour l'image.");
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    // Fonction pour afficher les messages d'erreur
+    function showError(id, message) {
+        const element = document.getElementById(id);
+        const error = document.createElement('div');
+        error.className = 'error';
+        error.textContent = message;
+        element.parentNode.insertBefore(error, element.nextSibling);
+    }
+
+    // Vérification de la validité de l'URL
+    function isValidURL(string) {
+        const regex = /^(ftp|http|https):\/\/[^ "]+$/;
+        return regex.test(string);
+    }
+
+</script>
