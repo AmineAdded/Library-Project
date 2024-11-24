@@ -1,6 +1,7 @@
 <?php 
+    session_start();
     include("DBconnect.php");
-    $idAdmin=$_GET['idAdmin'];
+    $username=$_SESSION['username'];
 
     if (!empty($_POST)) {
         $prenom=$_POST['prenom'];
@@ -8,7 +9,8 @@
         $email=$_POST['email'];
         $tel=$_POST['tel'];
         $password=$_POST['password'];
-        $idAdmin=$_POST['idAdmin'];
+
+        $username=$_SESSION['username'];
 
          // Initialisation du chemin de l'image par défaut
          $picture = '';
@@ -28,11 +30,10 @@
 
         $query= $pdo->prepare('insert into adherent (prenom,nom,email,tel,password,picture) values (?,?,?,?,?,?)');
         $query->execute([$prenom,$nom,$email,$tel,$password,$picture]);
-         header('location: DetailsAdherent.php?idAdmin='.$idAdmin);
+         header('location: DetailsAdherent.php');
          exit();
     }
     
     $title='Ajout Adhérent';
-    $template='AjoutAdherent';
-    include("layout.phtml");
+    include("AjoutAdherent.phtml");
 ?>

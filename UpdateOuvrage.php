@@ -1,6 +1,7 @@
 <?php
+    session_start();
     include 'DbConnect.php';
-    $idAdmin=$_GET['idAdmin'];
+    $username=$_SESSION['username'];
 
     if(!empty($_POST)){
         $idBook=$_POST['idBook'];
@@ -9,7 +10,6 @@
         $quantite=$_POST['quantite'];
         $categorie=$_POST['categorie'];
         $frais=$_POST['frais'];
-        $idAdmin=$_POST['idAdmin'];
         
         if (!empty($_FILES['picture']['name'])) {
             $uploadDir = 'assets/imgs/'; // Chemin de stockage des images
@@ -36,7 +36,7 @@
         $query=$pdo->prepare($sql);
         $query->execute();
 
-        header('location:DetailsOuvrage.php?idAdmin='.$idAdmin);
+        header('location:DetailsOuvrage.php');
         exit();
     }
 
@@ -45,6 +45,5 @@
     $ouvrages = $query->fetch();
 
     $title='Update Ouvrage';
-    $template='UpdateOuvrage';
-    include 'layout.phtml';
+    include 'UpdateOuvrage.phtml';
 ?>

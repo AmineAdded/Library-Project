@@ -1,4 +1,9 @@
 <?php
+    session_start(); // Activation des sessions
+    if(isset($_SESSION['idAdmin'])){//S'il y a une session
+        header('location: index.php');
+        exit();
+    }
     //connecter à la base de donnée
     include 'DbConnect.php';
     //la requete avec l'attribut query()
@@ -6,7 +11,6 @@
     $query->execute();
 
     $admins = $query->fetchAll();
-    $template="AfficherAdmin";
     $title="Affichage Admin";
-    include "layout.phtml";
+    include "AfficherAdmin.phtml";
 ?>

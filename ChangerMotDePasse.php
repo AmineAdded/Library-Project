@@ -4,7 +4,7 @@
 
     $errors = []; // Pour stocker les messages d'erreur
     $password = $newPassword = $confirmPassword = ""; // Initialisation des variables
-    $idAdmin = isset($_GET['idAdmin']) ? $_GET['idAdmin'] : ''; // Récupérer l'ID de l'admin depuis l'URL
+    $username=$_SESSION['username'];
 
     // Récupérer les erreurs de la session après la redirection
     if (isset($_SESSION['errors'])) {
@@ -19,7 +19,6 @@
         $password = trim($_POST['password']);
         $newPassword = trim($_POST['newPassword']);
         $confirmPassword = trim($_POST['confirmPassword']);
-        $idAdmin = $_POST['idAdmin'];
 
         // Validation des champs
         if (empty($password)) {
@@ -41,15 +40,15 @@
         if (empty($errors)) {
             try {
                 // Vérifier le mot de passe actuel
-                $query = $pdo->prepare("SELECT password FROM admin WHERE idAdmin = :idAdmin AND password = :password");
-                $query->execute(['idAdmin' => $idAdmin, 'password' => $password]);
+                $query = $pdo->prepare("SELECT password FROM admin WHERE username = :idAdmin AND password = :password");
+                $query->execute(['username' => $idAdmin, 'password' => $password]);
                 $result = $query->fetch(PDO::FETCH_ASSOC);
 
                 if ($result) {
                     // Mise à jour du mot de passe dans la base
-                    $update = $pdo->prepare("UPDATE admin SET password = :newPassword WHERE idAdmin = :idAdmin");
-                    if ($update->execute(['newPassword' => $newPassword, 'idAdmin' => $idAdmin])) {
-                        header('location: index.php?idAdmin=' . $idAdmin);
+                    $update = $pdo->prepare("UPDATE admin SET password = :newPassword WHERE username = :username");
+                    if ($update->execute(['newPassword' => $newPassword, 'username' => $username])) {
+                        header('location: index.php');
                         exit();
                     }else {
                         $errors[] = "Échec de la mise à jour du mot de passe.";
@@ -65,13 +64,12 @@
         // Si des erreurs sont détectées, les stocker dans la session et rediriger
         if (!empty($errors)) {
             $_SESSION['errors'] = $errors;
-            header('location: ChangerMotDePasse.php?idAdmin=' . $idAdmin);
+            header('location: ChangerMotDePasse.php');
             exit();
         }
     }
 
     // Affichage des erreurs et du formulaire
-    $template = "ChangerMotDePasse";
     $title = "Changer Mot de passe";
-    include 'layout.phtml';
+    include 'ChangerMotDePasse.phtml';
 ?>

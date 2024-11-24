@@ -1,6 +1,7 @@
 <?php
+    session_start();
     include 'DbConnect.php';
-    $idAdmin=$_GET['idAdmin'];
+    $username=$_SESSION['username'];
 
     if(!empty(($_POST))){
         //Les champs entre []: viennent du champ input
@@ -9,7 +10,8 @@
         $quantite=$_POST['quantite'];
         $categorie=$_POST['categorie'];
         $frais=$_POST['frais'];
-        $idAdmin=$_POST['idAdmin'];
+
+        $username=$_SESSION['username'];
         
          // Initialisation du chemin de l'image par défaut
          $picture = '';
@@ -31,9 +33,8 @@
         $query=$pdo->prepare($sql);
         $query->execute([$titre,$auteur,$quantite,$categorie,$frais,$picture]);
         
-        header('location: DetailsOuvrage.php?idAdmin='.$idAdmin);
+        header('location: DetailsOuvrage.php');
     }
-    $template='AjoutOuvrage';
     $title='Ajout Ouvrage';
-    include 'Layout.phtml';
+    include 'AjoutOuvrage.phtml';
 ?>

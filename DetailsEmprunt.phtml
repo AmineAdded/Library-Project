@@ -1,0 +1,71 @@
+<!-- ======= Styles ====== -->
+<link rel="stylesheet" href="assets/css/style.css">
+
+<!-- ================ Order Details List ================= -->
+<div class="details">
+    <div class="recentOrders" style="min-height: 200px;">
+        <div class="cardHeader">
+            <h2>Liste des emprunts</h2>
+        </div>
+        <!-- ================ LES TABLEAUX ICI ================= -->
+        <table>
+            <thead>
+                <tr>
+                    <td>Nom adhérent</td>
+                    <td>Prenom adhérent</td>
+                    <td>N°téléphone adherent</td>
+                    <td>Titre ouvrage</td>
+                    <td>Frais d'emprunt</td>
+                    <td>Date d'emprunt</td>
+                    <td>Date de retour</td>
+                </tr>
+            </thead>
+            <tbody id="contenu">
+                <?php foreach ($emprunts as $emprunt): ?>
+                    <tr>
+                        <td><?= $emprunt['nom'] ?></td>
+                        <td><?= $emprunt['prenom'] ?></td>
+                        <td><?= $emprunt['tel'] ?></td>
+                        <td><?= $emprunt['titre'] ?></td>
+                        <td><?= $emprunt['frais'] ?></td>
+                        <td><?= $emprunt['dateEmp'] ?></td>
+                        <td><?= $emprunt['dateRetour'] ?></td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+
+
+    </div>
+
+</div>
+
+
+<script>
+    //Recherche
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function() {
+        let searchTerm = this.value.toLowerCase(); // Obtenir la valeur du champ de recherche
+        let rows = document.querySelectorAll('#contenu tr'); // Obtenir toutes les lignes du tableau
+
+        rows.forEach(function(row) {
+            let cells = row.getElementsByTagName('td');
+            let found = false;
+
+            // Vérifier chaque cellule de la ligne
+            for (let i = 0; i < cells.length; i++) {
+                if (cells[i].innerText.toLowerCase().includes(searchTerm)) {
+                    found = true;
+                    break; // Si on trouve une correspondance, on sort de la boucle
+                }
+            }
+
+            // Afficher ou cacher la ligne en fonction du résultat
+            if (found) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+</script>

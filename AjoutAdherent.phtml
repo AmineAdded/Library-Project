@@ -1,8 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
 
- <link rel="stylesheet" href="assets/css/styleFormAjoutAdhérent.css">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $title ?></title>
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="assets/css/styleFormAjoutAdhérent.css">
+    <!-- fontawesome icons -->
+    <script src="https://kit.fontawesome.com/ea12e32343.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
     <!-- enctype: pour manipuler le lien d'image -->
-    <form class="form" action="<?= $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="idAdmin" id="" value="<?=$idAdmin?>">
+    <form class="form" action="<?= $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
         <p class="title">Ajout Adhérent</p>
         <p class="message">Créer un compte adhérent. </p>
         <div class="flex">
@@ -14,12 +27,12 @@
                 <input class="input" type="text" name="nom" required="">
                 <span>Lastname</span>
             </label>
-        </div>  
-                
+        </div>
+
         <label>
             <input class="input" type="email" name="email" required="">
             <span>Email</span>
-        </label> 
+        </label>
         <label>
             <input class="input" type="tel" name="tel" required="">
             <span>Tel</span>
@@ -30,21 +43,21 @@
         </label>
         <div class="flex items-center justify-between mt-3">
             <label class="text-base font-medium text-gray-900">
-              Profile Picture
+                Profile Picture
             </label>
-          </div>
-          <div class="mt-2">
-            <input
-              class="file-input w-full max-w-xs"
-              type="file"
-              name="picture"
-            />
         </div>
-        
-        <button class="submit">Submit</button>
+        <div class="mt-2">
+            <input class="file-input w-full max-w-xs" type="file" name="picture" />
+        </div>
+
+        <button class="submit">Ajouter</button>
     </form>
     <div class="quiz-exit">
-        <a href="DetailsAdherent.php?idAdmin=<?=$idAdmin?>"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill: #635147;">
+        <a href="DetailsAdherent.php"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                style="fill: #635147;">
                 <path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"></path>
             </svg></a>
     </div>
+</body>
+
+</html>

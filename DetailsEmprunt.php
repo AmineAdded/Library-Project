@@ -4,9 +4,27 @@ if (!isset($_SESSION['username'])) {
     header('location:AfficherAdmin.php');
     exit();
 }
-include 'DbConnect.php';
-$query = $pdo->query('select * from feedback');
-$feedbacks = $query->fetchAll();
+
+include("DBconnect.php");
+//requete
+$query = $pdo->query('
+    SELECT 
+        nom,
+        prenom,
+        tel,
+        titre,
+        frais,
+        dateEmp,
+        DATE_ADD(dateEmp, INTERVAL 15 DAY) AS dateRetour
+    FROM 
+        emprunt
+    JOIN 
+        adherent ON adherent.idAdherent = emprunt.userid
+    JOIN 
+        ouvrages ON ouvrages.idBook = emprunt.id
+');
+$emprunts = $query->fetchAll();
+
 
 $query1 = $pdo->prepare("SELECT COUNT(*) AS total FROM adherent");
 $query1->execute();
@@ -31,6 +49,6 @@ $query2 = $pdo->prepare("SELECT username,picture FROM admin where username=?");
 $query2->execute([$_SESSION['username']]);
 $result1 = $query2->fetch(PDO::FETCH_ASSOC);
 
-$template = "Feedback";
-$title = "liste feedback";
-include 'layout.phtml';
+$title = 'Details emprunts';
+$template = 'DetailsEmprunt';
+include("layout.phtml");

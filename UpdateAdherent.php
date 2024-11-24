@@ -1,6 +1,8 @@
 <?php 
     include("DBconnect.php");
-    $idAdmin=$_GET['idAdmin'];
+    session_start();
+
+    $username=$_SESSION['username'];
 
     if (!empty($_POST)) {
         $idAdherent=$_POST['idAdherent'];
@@ -9,7 +11,6 @@
         $email=$_POST['email'];
         $tel=$_POST['tel'];
         $password=$_POST['password'];
-        $idAdmin=$_POST['idAdmin'];
         
         if (!empty($_FILES['picture']['name'])) {
             $uploadDir = 'assets/imgs/'; // Chemin de stockage des images
@@ -36,7 +37,7 @@
         $query=$pdo->prepare($sql);
         $query->execute();
 
-        header('location: DetailsAdherent.php?idAdmin='.$idAdmin);
+        header('location: DetailsAdherent.php');
         exit();
     }
 
@@ -45,6 +46,5 @@
     $adherents=$requette->fetch();
     
     $title='Update adherent';
-    $template='UpdateAdherent';
-    include("layout.phtml");
+    include("UpdateAdherent.phtml");
 ?>

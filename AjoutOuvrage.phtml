@@ -3,7 +3,6 @@
         <h2>Ajouter un Nouveau Livre</h2>
         <!-- enctype: pour manipuler le lien d'image -->
         <form id="bookForm" method="post" action="<?= $_SERVER['PHP_SELF']?>" enctype="multipart/form-data">
-            <input type="hidden" name="idAdmin" id="" value="<?=$idAdmin?>">
             
             <label for="titre">Titre</label>
             <input type="text" id="titre" name="titre" placeholder="Entrez le titre du livre" required>
@@ -37,7 +36,7 @@
         </form>
     </div>
     <div class="quiz-exit">
-        <a href="DetailsOuvrage.php?idAdmin=<?=$idAdmin?>"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill: #635147;">
+        <a href="DetailsOuvrage.php"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill: #635147;">
                 <path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"></path>
             </svg></a>
     </div>
@@ -142,62 +141,3 @@
             color: #635147;
         }
     </style>
-
-    <script>
-        // function validateForm() {
-        //     let isValid = true;
-        //     const titre = document.getElementById('titre').value.trim();
-        //     const auteur = document.getElementById('auteur').value.trim();
-        //     const quantite = document.getElementById('quantite').value.trim();
-        //     const categorie = document.getElementById('categorie').value.trim();
-        //     const frais = document.getElementById('frais').value.trim();
-        //     const picture = document.getElementById('picture').value.trim();
-
-        //     // Réinitialiser les messages d'erreur
-        //     document.querySelectorAll('.error').forEach(e => e.remove());
-
-        //     // Vérification des champs
-        //     if (titre === "") {
-        //         showError('titre', "Le titre est requis.");
-        //         isValid = false;
-        //     }
-        //     if (auteur === "") {
-        //         showError('auteur', "L'auteur est requis.");
-        //         isValid = false;
-        //     }
-        //     if (quantite === "" || quantite <= 0) {
-        //         showError('quantite', "Veuillez entrer une quantité valide.");
-        //         isValid = false;
-        //     }
-        //     if (categorie === "") {
-        //         showError('categorie', "La catégorie est requise.");
-        //         isValid = false;
-        //     }
-        //     if (frais === "" || frais < 0) {
-        //         showError('frais', "Veuillez entrer un montant de frais valide.");
-        //         isValid = false;
-        //     }
-        //     if (picture === "" || !isValidURL(picture)) {
-        //         showError('picture', "Veuillez entrer une URL valide pour l'image.");
-        //         isValid = false;
-        //     }
-
-        //     return isValid;
-        // }
-
-        // // Fonction pour afficher les messages d'erreur
-        // function showError(id, message) {
-        //     const element = document.getElementById(id);
-        //     const error = document.createElement('div');
-        //     error.className = 'error';
-        //     error.textContent = message;
-        //     element.parentNode.insertBefore(error, element.nextSibling);
-        // }
-
-        // // Vérification de la validité de l'URL
-        // function isValidURL(string) {
-        //     const regex = /^(ftp|http|https):\/\/[^ "]+$/;
-        //     return regex.test(string);
-        // }
-
-    </script>

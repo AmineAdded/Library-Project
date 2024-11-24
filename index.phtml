@@ -1,8 +1,7 @@
 <!-- ======= Styles ====== -->
 <script src="js/vue.global.js"></script>
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
     .bg-white {
         background-color: #ffffff !important;
@@ -152,443 +151,185 @@
         display: flex;
         position: relative;
     }
-
-    .input-group-append .btn {
-        margin-left: -1px;
-        /* Pour éviter un espacement entre le champ et le bouton */
-    }
-
-    .input-group {
-        position: relative;
-        display: flex;
-        /* Définit un conteneur flexible pour organiser les éléments en ligne */
-        width: 100%;
-        /* Occupe toute la largeur disponible */
-    }
-
-    .input-group .form-control {
-        position: relative;
-        flex: 1 1 auto;
-        /* Permet au champ de saisie de se développer et de s'adapter à la largeur */
-        width: 1%;
-        /* Prévient que l'élément ait une largeur fixe */
-        min-width: 0;
-        /* Permet à l'élément de s'ajuster à son contenu */
-    }
-
-    .input-group-prepend,
-    .input-group-append {
-        display: flex;
-        /* Utilise l'affichage flexible pour les éléments avant et après le champ de saisie */
-        position: relative;
-    }
-
-    .input-group-prepend .btn,
-    .input-group-append .btn {
-        margin-left: -1px;
-        /* Pour éviter l'écart entre les éléments du groupe */
-    }
-
-    .input-group .input-group-text {
-        display: flex;
-        /* Aligne les éléments à l'intérieur de l'input group */
-        padding: .375rem .75rem;
-        /* Ajuste les espacements internes */
-        font-size: 1rem;
-        /* Définit la taille du texte */
-    }
-
-    .list-group {
-        display: flex;
-        flex-direction: column;
-        padding-left: 0;
-        margin-bottom: 0;
-        list-style: none;
-        /* Supprime les puces des éléments de la liste */
-    }
-
-    .mb-3 {
-        margin-bottom: 1rem;
-    }
-
-    #app {
-        position: absolute;
-        top: 50%;
-        /* Place l'élément à 50% de la hauteur du parent */
-        left: 50%;
-        /* Place l'élément à 50% de la largeur du parent */
-        transform: translate(-50%, -50%);
-        /* Ajuste pour centrer parfaitement */
-        max-width: 400px;
-        width: 100%;
-    }
-
-    .couleur-arriere-plan {
-        background: hsl(220, 10%, 12%);
-    }
 </style>
 
 <!-- =============== Navigation ================ -->
-<div class="container">
-    <div class="navigation">
-        <ul>
-            <!-- Afficher le nom et l'image du admin -->
-            <li>
-                <div style="color: white; margin-left: 60px; font-size: 20px;" class="bienvenue">
-                    <img class='img-circle profile_img' height=120 width=120 src=<?= $result1['picture'] ?>>
-                    </br></br>
-                    <h3 class="bienv">Welcome <span style="text-align: center;position: relative;left: -20px;"> <?= $result1['username'] ?> </span></h3>
-                </div>
-                <br><br>
-            </li>
-            <li>
-                <a href="index.php?idAdmin=<?= $_GET['idAdmin'] ?>">
-                    <span class="icon">
-                        <ion-icon name="home-outline"></ion-icon>
-                    </span>
-                    <span class="title">Accueil</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="DetailsAdherent.php?idAdmin=<?= $_GET['idAdmin'] ?>">
-                    <span class="icon">
-                        <ion-icon name="people-outline"></ion-icon>
-                    </span>
-                    <span class="title">Adhérents</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="DetailsOuvrage.php?idAdmin=<?= $_GET['idAdmin'] ?>">
-                    <span class="icon">
-                        <ion-icon name="book-outline"></ion-icon>
-                    </span>
-                    <span class="title">Ouvrages</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <span class="icon">
-                        <ion-icon name="folder-open-outline"></ion-icon>
-                    </span>
-                    <span class="title">Emprunt</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <span class="icon">
-                        <ion-icon name="stats-chart-outline"></ion-icon>
-                    </span>
-                    <span class="title">Satistique</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="Feedback.php?idAdmin=<?= $_GET['idAdmin'] ?>">
-                    <span class="icon">
-                        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-                    </span>
-                    <span class="title">Feedback</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="AfficherAdmin.php" id="logoutLink">
-                    <span class="icon">
-                        <ion-icon name="log-out-outline"></ion-icon>
-                    </span>
-                    <span class="title">Sign Out</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <!-- ========================= Main ==================== -->
-    <div class="main">
-        <div class="topbar">
-            <div class="toggle">
-                <ion-icon name="menu-outline"></ion-icon>
-            </div>
-            <div class="search">
-                <label>
-                    <input type="text" placeholder="Search here">
-                    <ion-icon name="search-outline"></ion-icon>
-                </label>
-            </div>
-            <div>
-                <button class="button">
-                    <svg class="bell" viewBox="0 0 448 512">
-                        <path
-                            d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z">
-                        </path>
-                    </svg>
-                    Notifications
-                    <div class="arrow">›</div>
-                    <div class="dot"></div>
-                </button>
-            </div>
-
-            <div class="container1">
-                <!-- BEGIN NAV -->
-                <nav class="navTop row">
-                    <div class="menuIcon fl"><span class="fa fa-user"></span></div>
-                    <div class="account fr">
-                        <div class="name has-submenu">Admin<span class="fa fa-angle-down"></span></div>
-                        <ul class="accountLinks submenu">
-                            <li><a href="ChangerMotDePasse.php?idAdmin=<?= $_GET['idAdmin'] ?>">Changer le mot de passe </a></li>
-                            <li><a href="AfficherAdmin.php" id="logoutLinkBoard">Déconnecter<span
-                                        class="fa fa-sign-out fr"></span></a></li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </div>
-
-        <!-- ======================= Cards ================== -->
-        <div class="cardBox">
-            <div class="card">
-                <div>
-                    <div class="numbers"><?= $result['total'] ?></div>
-                    <div class="cardName">Adhérents</div>
-                </div>
-
-                <div class="iconBx">
-                    <ion-icon name="eye-outline"></ion-icon>
-                </div>
-            </div>
-
-            <div class="card">
-                <div>
-                    <div class="numbers">80</div>
-                    <div class="cardName">Livres empruntés</div>
-                </div>
-
-                <div class="iconBx">
-                    <ion-icon name="cart-outline"></ion-icon>
-                </div>
-            </div>
-
-            <div class="card">
-                <div>
-                    <div class="numbers"><?= $resultFeed['total'] ?></div>
-                    <div class="cardName">Comments</div>
-                </div>
-
-                <div class="iconBx">
-                    <ion-icon name="chatbubbles-outline"></ion-icon>
-                </div>
-            </div>
-
-            <div class="card">
-                <div>
-                    <div class="numbers">$7,842</div>
-                    <div class="cardName">Revenus</div>
-                </div>
-
-                <div class="iconBx">
-                    <ion-icon name="cash-outline"></ion-icon>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================ Order Details List ================= -->
-        <div class="details">
-            <div class="recentOrders" style="background-color: #f3d094; height: 500px;">
 
 
-                <table>
+<!-- ================ Order Details List ================= -->
 
-                    <tbody>
-                        <div id="app" class="bg-white p-4 rounded shadow-sm" style="max-width: 400px; width: 100%;">
-                            <h1 class="text-center text-primary mb-4">Liste de tâches</h1>
-                            <liste-tache :taches="taches" @remove="supprimer"></liste-tache>
-                            <ajout-tache @add="ajouter"></ajout-tache>
 
-                        </div>
-                        <script src="js/liste des taches.js"></script>
-                        <script src="components/listetache.js"></script>
-                        <script src="components/ajoutTache.js"></script>
-                        <script>
-                            const mountedApp = app.mount('#app');
-                        </script>
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<!-- Logout Modal -->
-<div id="logoutModal" class="modal">
-    <div class="modal-content">
-        <h3>Confirmation de Déconnexion</h3>
-        <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
-        <div class="modal-buttons">
-            <button id="confirmLogout" class="btn-yes">Oui</button>
-            <button id="cancelLogout" class="btn-no">Non</button>
-        </div>
-    </div>
-</div>
 <style>
-    /* Modal Style */
-    .modal {
-        display: none;
-        /* Hidden by default */
-        position: fixed;
-        z-index: 999;
-        /* Above other elements */
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        /* Enable scroll if needed */
-        background-color: rgba(0, 0, 0, 0.5);
-        /* Black background with opacity */
-        justify-content: center;
-        align-items: center;
-    }
-
-    .modal-content {
-        background-color: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        text-align: center;
-        max-width: 400px;
-        margin: auto;
-    }
-
-    .modal-content h3 {
-        margin-top: 0;
-    }
-
-    .modal-buttons {
+    /* Conteneur principal */
+    .statisticsContainer {
         display: flex;
-        justify-content: space-around;
-        margin-top: 20px;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+        padding: 20px;
     }
 
-    .btn-yes {
-        background-color: #e74c3c;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
+    /* Section individuelle */
+    .statSection {
+        background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        padding: 25px;
+        width: 500px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .btn-yes:hover {
-        background-color: #c0392b;
+    .statSection:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
     }
 
-    .btn-no {
-        background-color: #95a5a6;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
+    .statSection h2 {
+        color: #444;
+        font-family: 'Roboto', Arial, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 10px;
     }
 
-    .btn-no:hover {
-        background-color: #7f8c8d;
+    .statSection canvas {
+        max-width: 100%;
+        height: auto;
     }
 </style>
-<script>
-    // Select modal elements
-    const logoutModal = document.getElementById('logoutModal');
-    const confirmLogout = document.getElementById('confirmLogout');
-    const cancelLogout = document.getElementById('cancelLogout');
-    const logoutLink = document.getElementById('logoutLink');
-    const logoutLinkBoard = document.getElementById('logoutLinkBoard');
 
-    // Open modal when clicking logout
-    logoutLink.addEventListener('click', function(e) {
-        e.preventDefault(); // Prevent default link behavior
-        logoutModal.style.display = 'flex'; // Show modal
-    });
+<div class="statisticsContainer">
+    <!-- Graphique en barres -->
+    <div class="statSection">
+        <h2>Statistiques des Livres par Catégorie</h2>
+        <p>Quantité de livres disponibles par catégorie</p>
+        <canvas id="barChart"></canvas>
+    </div>
 
-    // Open modal when clicking logout
-    logoutLinkBoard.addEventListener('click', function(e) {
-        e.preventDefault(); // Prevent default link behavior
-        logoutModal.style.display = 'flex'; // Show modal
-    });
+    <!-- Graphique en secteurs -->
+    <div class="statSection">
+        <h2>Répartition des Livres</h2>
+        <p>Pourcentage des livres par catégorie</p>
+        <canvas id="pieChart"></canvas>
+    </div>
+</div>
 
-    // Close modal when clicking "Non"
-    cancelLogout.addEventListener('click', function() {
-        logoutModal.style.display = 'none';
-    });
-
-    // Confirm logout action
-    confirmLogout.addEventListener('click', function() {
-        window.location.href = logoutLink.href; // Redirect to logout page
-    });
-
-    // Confirm logout action
-    confirmLogout.addEventListener('click', function() {
-        window.location.href = logoutLinkBoard.href; // Redirect to logout page
-    });
-
-    // Close modal when clicking outside of modal content
-    window.addEventListener('click', function(e) {
-        if (e.target == logoutModal) {
-            logoutModal.style.display = 'none';
-        }
-    });
-</script>
-
-<!-- =========== Scripts =========  -->
-<script src="assets/js/main.js"></script>
-
-<!-- ====== ionicons ======= -->
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-    // Fonction pour gérer le menu et sous-menu
-    function elm(x) {
-        var target = x.substring(1);
-        var type = x.charAt(0);
-        if (type == '#') {
-            return document.getElementById(target);
-        } else if (type == '.') {
-            return document.getElementsByClassName(target);
-        } else {
-            return document.getElementsByTagName(x);
-        }
-    }
+    // Données récupérées via PHP
+    const labels = <?php echo json_encode($categorie); ?>;
+    const dataValues = <?php echo json_encode($quantite); ?>;
 
-    // Gestion des sous-menus
-    if (elm(".has-submenu")) {
-        for (var i = 0, len = elm(".has-submenu").length; i < len; i++) {
-            elm(".has-submenu")[i].onclick = function(e) {
-                e.stopPropagation();
-                bascule(this.nextElementSibling);
+    // Configuration du graphique en barres
+    const barData = {
+        labels: labels,
+        datasets: [{
+            label: 'Quantité',
+            data: dataValues,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(153, 102, 255, 0.6)',
+                'rgba(255, 159, 64, 0.6)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 2,
+        }]
+    };
+
+    const barConfig = {
+        type: 'bar',
+        data: barData,
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.1)'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Quantité de Livres par Catégorie',
+                    font: {
+                        size: 16,
+                        weight: 'bold',
+                    },
+                    color: '#333'
+                },
             }
         }
-    }
+    };
 
-    // Gestion du clic sur l'icône du menu
-    if (elm(".menuIcon")) {
-        elm(".menuIcon")[0].onclick = function() {
-            elm(".container")[0].classList.toggle("is-click");
-        };
-    }
+    // Configuration du graphique en secteurs
+    const pieData = {
+        labels: labels,
+        datasets: [{
+            label: 'Pourcentage',
+            data: dataValues,
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)',
+                'rgb(0, 128, 0)'
+            ],
+            hoverOffset: 4
+        }]
+    };
 
-    // Fonction pour basculer l'affichage des éléments
-    function bascule(x) {
-        var css = window.getComputedStyle(x, null);
-        if (css.getPropertyValue("display") == 'none') {
-            x.style.display = 'block';
-        } else {
-            x.style.display = 'none';
+    const pieConfig = {
+        type: 'pie',
+        data: pieData,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
+                },
+                title: {
+                    display: true,
+                    text: 'Répartition des Livres par Catégorie',
+                    font: {
+                        size: 16,
+                        weight: 'bold',
+                    },
+                    color: '#333'
+                },
+            }
         }
-    }
+    };
+
+    // Initialisation des graphiques
+    const barChart = new Chart(
+        document.getElementById('barChart'),
+        barConfig
+    );
+
+    const pieChart = new Chart(
+        document.getElementById('pieChart'),
+        pieConfig
+    );
 </script>
