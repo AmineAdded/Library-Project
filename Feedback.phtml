@@ -52,17 +52,17 @@
                 <table>
                     <thead>
                         <tr>
-                            <td>Nom</td>
-                            <td>Prenom</td>
+                            <td>Username</td>
                             <td>Commentaire</td>
+                            <td>Id Adherent</td>
                         </tr>
                     </thead>
                     <tbody id="contenu">
                         <?php foreach ($feedbacks as $feedback): ?>
                             <tr>
-                                <td><?= $feedback['nom'] ?></td>
-                                <td><?= $feedback['prenom'] ?></td>
+                                <td><?= $feedback['username'] ?></td>
                                 <td><?= $feedback['commentaire'] ?></td>
+                                <td><?= $feedback['id_ad'] ?></td>
 
                                 <td>
                                     <div class="ButtonsUpSupp">

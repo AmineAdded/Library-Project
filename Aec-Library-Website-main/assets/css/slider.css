@@ -1,0 +1,75 @@
+.slider {
+    width: 100%; /* Utiliser 100% pour couvrir toute la largeur de la page */
+    height: 580px;
+    margin: 130px auto; /* Ajouter une marge en haut pour descendre le slider */
+    position: relative;
+    overflow: hidden;
+}
+
+.slider .list {
+    position: absolute;
+    width: max-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    transition: 1s;
+}
+
+.slider .list img {
+    width: 100vw; /* S'assurer que les images remplissent la largeur de la page */
+    height: 100vh;
+    object-fit: cover;
+}
+
+.slider .buttons {
+    position: absolute;
+    top: 45%; /* Ajuster si nécessaire pour centrer les boutons */
+    left: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider .buttons button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff5;
+    color: #fff;
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.slider .dots {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.slider .dots li {
+    list-style: none;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    margin: 10px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.slider .dots li.active {
+    width: 30px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .slider {
+        height: 400px; /* Ajuster pour les petits écrans */
+    }
+}

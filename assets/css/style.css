@@ -432,14 +432,6 @@ body {
   padding: 0 10px;
 }
 
-/* Styles responsive */
-@media (max-width: 700px) {
-  .topbar {
-      flex-wrap: wrap;
-      gap: 10px;
-  }
-}
-
 .toggle {
   position: relative;
   width: 60px;
@@ -693,9 +685,6 @@ body {
   color: var(--white);
 }
 
-.Mdps{
-  text-align: center;
-}
 .ImgAdherent{
   height: 70px;
 }

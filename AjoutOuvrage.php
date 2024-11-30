@@ -10,6 +10,8 @@
         $quantite=$_POST['quantite'];
         $categorie=$_POST['categorie'];
         $frais=$_POST['frais'];
+        $description=$_POST['description'];
+
 
         $username=$_SESSION['username'];
         
@@ -18,7 +20,7 @@
 
          // Vérification si un fichier a été téléchargé
          if (isset($_FILES['picture']) && $_FILES['picture']['error'] == 0) {
-             $target_dir = "assets/imgs/"; // Répertoire où stocker l'image
+             $target_dir = ""; // Répertoire où stocker l'image
              $target_file = $target_dir . basename($_FILES["picture"]["name"]);
  
              // Déplacer le fichier téléchargé vers le répertoire cible
@@ -29,9 +31,9 @@
              }
          }
          
-        $sql="INSERT INTO ouvrages(titre,auteur,quantite,categorie,frais,picture) values (?,?,?,?,?,?)";
+        $sql="INSERT INTO ouvrages(titre,auteur,quantite,categorie,frais,picture,description) values (?,?,?,?,?,?,?)";
         $query=$pdo->prepare($sql);
-        $query->execute([$titre,$auteur,$quantite,$categorie,$frais,$picture]);
+        $query->execute([$titre,$auteur,$quantite,$categorie,$frais,$picture,$description]);
         
         header('location: DetailsOuvrage.php');
     }

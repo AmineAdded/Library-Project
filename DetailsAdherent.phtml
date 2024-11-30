@@ -58,24 +58,21 @@
                 <table>
                     <thead>
                         <tr>
-                            <td>Profile</td>
-                            <td>Nom</td>
-                            <td>Prenom</td>
-                            <td>Email</td>
-                            <td>Téléphone</td>
-                            <td>Mot de passe</td>
+                            <td style="text-align: left;">Profile</td>
+                            <td style="text-align: left;">Nom</td>
+                            <td style="text-align: left;">Prenom</td>
+                            <td style="text-align: left;">Email</td>
+                            <td style="text-align: left;">Téléphone</td>
                         </tr>
                     </thead>
                     <tbody id="contenu">
                         <?php foreach ($adherents as $adherent): ?>
                             <tr>
-                                <td><img src="<?= $adherent['picture'] ?>" class="ImgAdherent"></td>
-                                <td><?= $adherent['nom'] ?></td>
-                                <td><?= $adherent['prenom'] ?></td>
-                                <td><?= $adherent['email'] ?></td>
-                                <td><?= $adherent['tel'] ?></td>
-                                <td class="Mdps"><?= $adherent['password'] ?></td>
-
+                                <td><img src="assets\imgs\<?= $adherent['picture'] ?>" class="ImgAdherent"></td>
+                                <td style="text-align: left;"><?= $adherent['nom'] ?></td>
+                                <td style="text-align: left;"><?= $adherent['prenom'] ?></td>
+                                <td style="text-align: left;"><?= $adherent['email'] ?></td>
+                                <td style="text-align: left;"><?= $adherent['tel'] ?></td>
                                 <td>
                                     <div class="ButtonsUpSupp">
                                         <a href="UpdateAdherent.php?idAdherent=<?= $adherent['idAdherent'] ?>" class="btn-update"><i class="fa-solid fa-pen-to-square"></i></a>

@@ -6,7 +6,8 @@ if (!isset($_SESSION['username'])) {
     header('location:AfficherAdmin.php');
     exit();
 }
-
+// Inclure la vérification de session
+include("verifier_session.php");
 // Inclure la connexion à la base de données
 include("DBconnect.php");
 
@@ -41,37 +42,21 @@ foreach ($statistiques as $data) {
     $quantite[] = $data['quantite'];
 }
 
-// Créer un cookie pour 60 secondes
-$name = "user";
-$value = "Amine";
-$expire = time() + 60; // Expire dans 60 secondes
-$path = "/";
-setcookie($name, $value, $expire, $path);
+//requête pour les emprunts qui passe la date de retour
+$query = $pdo->prepare("SELECT COUNT(*) AS total FROM emprunt WHERE DATE_ADD(dateEmp, INTERVAL 15 DAY) < CURDATE()");
+$query->execute();
+$resultRetard = $query->fetch(PDO::FETCH_ASSOC);
+//le nombre des retards
+$totalRetard = $resultRetard['total'];
+
+//requette pour afficher les emprunts qui passe la date de retour
+$query = $pdo->query('select id,userid,dateEmp,duree from emprunt
+    WHERE 
+        DATE_ADD(dateEmp, INTERVAL 15 DAY) < CURDATE()');
+$emprunts = $query->fetchAll();
 
 // Configuration pour le rendu de la page
 $title = 'Acceuil';
 $template = 'index';
 include("layout.phtml");
 ?>
-
-<script>
-    // Fonction pour vérifier si un cookie existe
-    function getCookie(name) {
-        let cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            let cookie = cookies[i].trim();
-            if (cookie.startsWith(name + "=")) {
-                return cookie.split('=')[1];
-            }
-        }
-        return null;
-    }
-
-    // Vérification régulière de l'état du cookie
-    setInterval(function() {
-        if (!getCookie('user')) {
-            // Redirection si le cookie a expiré
-            window.location.href = 'AfficherAdmin.php';
-        }
-    }, 1000); // Vérification toutes les secondes
-</script>
