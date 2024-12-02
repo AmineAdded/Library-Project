@@ -1,0 +1,143 @@
+.container .contact-form{
+    position: relative;
+    padding: 70px;
+    padding-left: 70px;
+    margin-left: 150px;
+    width:calc(100% - 150px);
+    height: 100%;
+    background: #c9bca5;
+    border-radius: 24px;
+  }
+  .container .contact-form h2{
+    color: #5a5757;
+    font-weight: 500;
+  }
+  
+  .container .contact-form .form{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 30px;
+  }
+  
+  .container .contact-form .form .inputBox{
+    position: relative;
+    margin-bottom: 35px;
+  }
+  .container .contact-form .form .inputBox.w50{
+    width:47%;
+  }
+  .container .contact-form .form .inputBox.w100{
+    width: 100%;
+  }
+  .container .contact-form .form .inputBox input,
+  .container .contact-form .form .inputBox textarea{
+    width: 100%;
+    resize: none;
+    padding: 5px 0;
+    font-size: 18px;
+    color: #5a5757;
+    font-weight: 300;
+    border: none;
+    outline: none;
+    background-color: #c9bca5;
+    border-bottom:1px solid #5a5757 ;
+  }
+  .container .contact-form .form .inputBox textarea{
+    height: 120px;
+  }
+  .container .contact-form .form .inputBox span{
+    position: absolute;
+    left: 0;
+    padding:5px 0;
+    pointer-events: none;
+    font-size: 300;
+    font-weight: 300;
+    transition: 0.3s;
+  }
+  
+  .container .contact-form .form .inputBox input:focus ~ span,
+  .container .contact-form .form .inputBox input:valid ~span,
+  .container .contact-form .form .inputBox textarea:focus ~ span,
+  .container .contact-form .form .inputBox textarea:valid ~ span{
+    transform: translateY(-20px);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #5a5757;
+    font-weight: 500px;
+  }
+  
+  .container .contact-form .form .inputBox input[type="submit"]{
+    position: relative;
+    cursor: pointer;
+    background: #5a5757;
+    color: #ffffff;
+    max-width: 170px;
+    padding: 12px;
+  }
+  
+  .container .contact-form .form .inputBox input[type="submit"]:hover{
+    background-color: #b6a485;
+    border: none;
+  }
+  @media  (max-width: 1200px){
+    .container{
+      width: 90%;
+      min-width:auto ;
+      margin: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    }
+    .container .contact-info{
+      top:0;  
+      height: 550px;
+      position: relative;
+      box-shadow: none;
+    }
+    .container .contact-form{
+      position: relative;
+      width: calc(100% - 350px);
+      padding-left:0px ;
+      margin-left: 0px;
+      padding: 40px;
+      height: 550px;
+      box-shadow: none;
+    }
+  }
+  @media (max-width: 991px){
+    section{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #5a5757;
+    }
+    section::before{
+      display: none;
+    }
+    .container{
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    .container .contact-form{
+      width: 100%;
+      height: auto;
+    }
+    .container .contact-info{
+        width: 100%;
+        height: auto;
+    
+    }
+  
+  }
+  @media (max-width: 600px){
+      .container .contact-form{
+          padding: 25px;
+      }
+      .container .contact-info{
+          padding: 25px;
+          flex-direction: column;
+          align-items: flex-start;
+      }
+  }

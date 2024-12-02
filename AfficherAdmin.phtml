@@ -1,5 +1,23 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $title ?></title>
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- fontawesome icons -->
+    <script src="https://kit.fontawesome.com/ea12e32343.js" crossorigin="anonymous"></script>
+
+=======
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
     <style>
         /* Style de base */
         body {
@@ -75,6 +93,68 @@
             color: #fff;
             text-decoration: underline;
         }
+<<<<<<< HEAD
+
+        .quiz-exit {
+            position: absolute;
+            top: 0;
+            left: 1rem;
+            margin: 10px;
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            border: 2px solid #635147;
+            ;
+        }
+
+        .quiz-exit:hover {
+            cursor: pointer;
+            box-shadow: 0 0.4rem 1.4rem 0 #635147;
+            ;
+            transform: translateY(-0.1rem);
+            transition: transform 150ms;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: grid;grid-template-columns: 1fr;">
+        <div style="padding: 20px;">
+            <?php
+            if (isset($_GET['message']) && $_GET['message'] == 'session_expiree') {
+                echo "<p style='color: red;'>Votre session a expiré. Veuillez vous reconnecter.</p>";
+            }
+            ?>
+        </div>
+
+        <div class="admin-list-container">
+            <?php if (!empty($admins)) : ?>
+                <?php foreach ($admins as $admin) : ?>
+                    <div class="admin-card">
+                        <div class="admin-avatar">
+                            <img src="assets\imgs\<?= $admin['picture'] ?>" style="heigh: 57px;width:57px; border-radius:50%">
+                        </div>
+                        <div class="admin-info">
+                            <a href="AuthentificationAdmin.php?idAdmin=<?= $admin['idAdmin'] ?>" class="admin-name"><?= $admin['username'] ?></a>
+                        </div>
+                    </div>
+                <?php endforeach ?>
+            <?php else : ?>
+                <p>Aucun administrateur trouvé.</p>
+            <?php endif ?>
+        </div>
+        <div class="quiz-exit">
+            <a href="./Aec-Library-Website-main/index2.php"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill: #635147;">
+                    <path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"></path>
+                </svg></a>
+        </div>
+    </div>
+</body>
+
+</html>
+=======
     </style>
 
     <div class="admin-list-container">
@@ -93,3 +173,4 @@
             <p>Aucun administrateur trouvé.</p>
         <?php endif ?>
     </div>
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38

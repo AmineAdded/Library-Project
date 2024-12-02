@@ -685,9 +685,12 @@ body {
   color: var(--white);
 }
 
+<<<<<<< HEAD
+=======
 .Mdps{
   text-align: center;
 }
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
 .ImgAdherent{
   height: 70px;
 }

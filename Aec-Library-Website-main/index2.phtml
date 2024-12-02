@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta name="theme-color" content="#f2f2f2">
+  <meta name="msapplication-navbutton-color" content="#f2f2f2">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#f2f2f2">
+  <meta name="og:title" content="AEC Library is a comprehensive library management system">
+  <meta name="og:description"
+    content="Designed for both large and small library systems, AEC Library is a comprehensive library management system. For managing circulation and stock, this is ideal for institutional, public, and digital libraries. In order to manage and automate the processing of even the largest of libraries, the AEC Library website was developed. According to the end user's requirements, the website is capable of managing Book Issues, Returns, and generating various Reports for Record-Keeping and Review purposes.">
+
+  <meta property="og:image" content="assets/logos/finalLogo.webp">
+  <meta name="og:type" content="library">
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEC Library</title>
+
+  <link rel="icon" href="assets/logos/finalLogo.webp" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <meta name="title" content="AEC Library is a comprehensive library management system">
+  <meta name="description"
+    content="Designed for both large and small library systems, AEC Library is a comprehensive library management system. For managing circulation and stock, this is ideal for institutional, public, and digital libraries. In order to manage and automate the processing of even the largest of libraries, the AEC Library website was developed. According to the end user's requirements, the website is capable of managing Book Issues, Returns, and generating various Reports for Record-Keeping and Review purposes.">
+  <meta name="keywords" content="AEC, library systems, library, digital libraries, books">
+  <!-- <meta http-equiv="Content-Type" content="text/html" charset="utf-8"> -->
+  <meta name="language" content="English">
+  <meta name="author" content="AEC LIBRARY">
+
+
+  <!-- Bootstrap CSS -->
+
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+  <!--Animation on scroll-->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+  <!-- Style CSS -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Nunito&family=Source+Sans+Pro&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+  </style>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/slider.css">
+  <link rel="stylesheet" href="assets/css/slider2.css">
+  
+  
+  <!-- Title bar icon -->
+  <link rel="icon" href="./assets/logos/finalLogo.webp" type="image/x-icon">
+
+  <!-- Adding new font -> Playfair-display -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+  <!--Adding AOS in it-->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+ 
+
+  <link rel="stylesheet" href="./assets/css/feedback.css">
+</head>
+
+<body class="body-style">
+
+
+  <!--Go to Top Button-->
+  <div id="topBtn" title="Go to Top">
+    <a href="#"><span class="fa fa-angle-up"></span></a>
+  </div>
+
+  <!--scroll bar feature addition-->
+  <div id="progressbar"></div>
+  <div id="scrollpath"></div>
+  <div id="percent"></div>
+  <!--scroll bar feature ends here-->
+
+  <!-- pre-loader -->
+  <div id="loading"></div>
+  <div class="preloader">
+    <div class="loader">
+      <div>
+        <ul>
+          <li>
+            <svg viewBox="0 0 90 120" fill="currentColor">
+              <path
+                d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z">
+              </path>
+            </svg>
+          </li>
+          <li>
+            <svg viewBox="0 0 90 120" fill="currentColor">
+              <path
+                d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z">
+              </path>
+            </svg>
+          </li>
+          <li>
+            <svg viewBox="0 0 90 120" fill="currentColor">
+              <path
+                d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z">
+              </path>
+            </svg>
+          </li>
+          <li>
+            <svg viewBox="0 0 90 120" fill="currentColor">
+              <path
+                d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z">
+              </path>
+            </svg>
+          </li>
+          <li>
+            <svg viewBox="0 0 90 120" fill="currentColor">
+              <path
+                d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z">
+              </path>
+            </svg>
+          </li>
+          <li>
+            <svg viewBox="0 0 90 120" fill="currentColor">
+              <path
+                d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z">
+              </path>
+            </svg>
+          </li>
+        </ul>
+      </div>
+      <span>Loading</span>
+    </div>
+  </div>
+  <style>
+    /* User Profile Dropdown */
+      .user-profile-dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .user-profile-toggle {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        padding: 10px 15px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .user-picture {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 10px;
+      }
+
+      .user-name {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      /* Dropdown Menu */
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+        z-index: 1000;
+      }
+
+      .user-profile-dropdown:hover .dropdown-menu {
+        display: block;
+        z-index: 9999;
+      }
+
+      .sign-out-button {
+        width: 100%;
+        text-align: left;
+        padding: 10px 15px;
+        background-color: white;
+        border: none;
+        color: #ff4d4d;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+
+      /* Modal */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+      }
+
+      .modal-content {
+        background-color: black;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        width: 90%;
+        max-width: 400px;
+      }
+
+      .modal-actions {
+        margin-top: 20px;
+      }
+
+      .cancel-button, .confirm-button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .cancel-button {
+        background-color: #ccc;
+        color: #333;
+        margin-right: 10px;
+      }
+
+      .confirm-button {
+        background-color: #ff4d4d;
+        color: white;
+      }
+
+      .confirm-button:hover {
+        background-color: #e60000;
+      }
+
+
+  </style>
+  <header class="header stickon">
+    <ul class="lsize">
+      <!-- <li class="logo"><a class="nav-link" href="index.phtml" onclick="return false;"><img
+            src="assets/logos/finalLogo.webp" alt="AEC Library" class="logo-img"></a></li>
+      <li class="login"> -->
+        <div class="logo">
+          <div class="user-profile-toggle">
+            
+            <img src="..\assets\imgs\<?= $_SESSION['picture']?>" alt="User Picture" class="user-picture" />
+            <span class="user-name"><?= $_SESSION['nom'].'.'.$_SESSION['prenom']; ?></span>
+          </div>
+        </div>
+      
+        <!-- <li class="logo"></li> -->
+
+      <div class="user-profile-dropdown">
+        <div class="user-profile-toggle">
+          
+        <button id="signOutButton" class="sign-out-button">Sign Out</button>
+        </div>
+        <!-- <div class="dropdown-menu">
+          
+        </div> -->
+      </div>
+
+      <div id="signOutModal" class="modal">
+        <div class="modal-content">
+          <h3>Confirm Sign Out</h3>
+          <p>Are you sure you want to sign out?</p>
+          <div class="modal-actions">
+            <button id="cancelButton" class="cancel-button">Cancel</button>
+            <a href="public/signout.php"><button id="confirmSignOutButton" class="confirm-button">Sign Out</button></a>
+          </div>
+        </div>
+      </div>
+
+        </a></li>
+    </ul>
+  </header>
+  <script>
+    // Modal and Sign Out Button Handlers
+    document.getElementById("signOutButton").addEventListener("click", function () {
+      document.getElementById("signOutModal").style.display = "flex";
+    });
+
+    document.getElementById("cancelButton").addEventListener("click", function () {
+      document.getElementById("signOutModal").style.display = "none";
+    });
+
+    document.getElementById("confirmSignOutButton").addEventListener("click", function () {
+      alert("Signed out successfully!");
+      document.getElementById("signOutModal").style.display = "none";
+      // Add your sign-out logic here
+    });
+
+    // Close modal if clicking outside of it
+    window.addEventListener("click", function (e) {
+      const modal = document.getElementById("signOutModal");
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+
+  </script>
+
+  <nav class="new-nav navbar-expand-lg navbar-light sticky">
+    <!-- navbar brand -->
+    <!-- <a href="index.html" class="navbar-brand" id="nb"> Pictionary </a> -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- hamburger menu -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- navbar items -->
+      <ul class="ms-auto" style="padding-top: 1px;">
+
+        <li class="nav-item"><a href="index2.php" onclick="return false;"><i class="fas fa-home"></i>Acceuil</a></li>
+        <li class="nav-item"><a href="QuiSommes-Nous.phtml"><i class="fas fa-book"></i>Qui Sommes-Nous?</a></li>
+        <!--<li class="nav-item"><a href="./public/donate-book.html"><i class="fas fa-book"></i>DONATE BOOKS</a></li>-->
+        <li class="nav-item"><a href="#Categorie"><i class="fas fa-sign-in-alt"></i>Categorie</a></li>
+        <!-- Added Quiz page  -->
+        <li class="nav-item"><a href="Quiz/pagequiz.phtml"><i class="fas fa-gamepad"></i>Jouer au Quiz</a></li>
+        <li class="nav-item"><a href="#propositions"><i class="fas fa-address-book"></i>Propositions</a></li>
+
+        <li class="nav-item"><a href="../AfficherAdmin.php"><i style="font-size: 21px;"
+              class="fas fa-user-friends"></i>Espace Admin</a></li>
+
+      </ul>
+    </div>
+  </nav>
+
+
+  <div class="slider">
+    <div class="list">
+        <div class="item">
+            <img src="img/img1.avif" alt="" >
+        </div>
+        <div class="item">
+            <img src="img/img2.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="img/img6.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="img/img4.webp" alt="">
+        </div>
+        <div class="item">
+            <img src="img/img5.webp" alt="">
+        </div>
+    </div>
+    <div class="buttons">
+        <button id="prev"><</button>
+        <button id="next">></button>
+    </div>
+    <ul class="dots">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+  </div>
+
+
+
+
+
+
+
+
+  <div class="blog-container" data-aos="fade-down" id="Categorie">
+    <div class="card1" data-aos="fade">
+      <div class="card-bg" style="background-image: url(image_I/image/categorie/FB_IMG_1620811146669.jpg);background-size: cover;"></div>
+      <div class="owner">
+        <h1>Histoire</h1>
+      </div>
+      <div class="info">
+        <p>Plongez dans le récit fascinant des événements qui ont façonné notre monde. Découvrez les grandes civilisations, les moments clés, et les figures emblématiques qui ont marqué les siècles. 
+          Revivez l'histoire à travers des faits captivants et des anecdotes inédites.</p>
+      </div>
+      <a href="livres/livre.php?categorie=Histoire" target="_blank" class="read-more">
+        Voir<span><i class="bot-arrow bi bi-arrow-right"></i></span>
+      </a>
+    </div>
+    <div class="card2" data-aos="fade">
+      <div class="card-bg" style="background-image: url(image_I/image/categorie/nature.jpg);background-size: cover;"></div>
+      <div class="owner">
+        <h1>Science</h1>
+      </div>
+      <div class="info">
+        <p>Entrez dans l'univers de la curiosité et de la découverte. De la physique fondamentale aux avancées technologiques, 
+          cette catégorie vous guide à travers les mystères de la nature et les innovations qui transforment notre quotidien.
+        </p>
+      </div>
+      <a href="livres/livre.php?categorie=Science" target="_blank" class="read-more">Voir<span><i
+            class="bot-arrow bi bi-arrow-right"></i></span></a>
+    </div>
+    <div class="card3" data-aos="fade">
+      <div class="card-bg" style="background-image: url(image_I/image/categorie/peinture.jpg);background-size: cover;"></div>
+      <div class="owner" >
+        <h1>Art</h1>
+      </div>
+      <div class="info">
+        <p>Laissez-vous inspirer par la créativité humaine dans toutes ses formes. Explorez la peinture, la sculpture, la musique, et bien d'autres disciplines qui nourrissent l'âme. 
+          De la Renaissance aux mouvements contemporains, l'art vous dévoile sa magie intemporelle.Hyper Text Markup Language is used for creating web pages and web applications.
+        </p>
+      </div>
+      <a href="livres/livre.php?categorie=Art" target="_blank" class="read-more">Voir<span><i
+            class="bot-arrow bi bi-arrow-right"></i></span></a>
+    </div>
+    <div class="card4" data-aos="fade">
+      <div class="card-bg" style="background-image: url(image_I/image/categorie/litt.webp);background-size: cover;"></div>
+      <div class="owner">
+        <h1>Littérature</h1>
+      </div>
+      <div class="info">
+        <p>Voyagez à travers les mots et les récits qui ont marqué les époques. De la poésie aux grands romans, explorez les œuvres intemporelles et les nouvelles voix qui façonnent le monde de la littérature. 
+          Découvrez des histoires qui éveillent l'imagination et nourrissent l'esprit.
+        </p>
+      </div>
+      <a href="livres/livre.php?categorie=Litterature" target="_blank" class="read-more">Voir<span><i
+            class="bot-arrow bi bi-arrow-right"></i></span></a>
+    </div>
+  </div>
+
+
+  <div class="container" id="propositions">
+  <div class="update" data-aos="fade-up">
+    <div class="contact-form" >
+      <?php if (!empty($errors)): ?>
+            <div class="error-messages">
+                <ul>
+                    <?php foreach ($errors as $error): ?>
+                        <li style="color:white;"><?= htmlspecialchars($error) ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+      <?php endif; ?>
+      <h2><strong>Avis</strong></h2>
+      <form aria-label="Contact us form" method="post" action="public/feedback.php">
+      <div class="form">
+        <div class="inputBox w50">
+          <input type="text" name="nom" required aria-required="true" aria-label="Entrer votre nom" aria-describedby="nom" value="<?= $_SESSION['nom']?>">
+          <span>Nom</span>
+          <span class = "error" role="alert" id="firstname"> </span>
+        </div>
+        <div class="inputBox w50">
+          <input type="text" name="prenom" required aria-required="true" aria-label="Entrer votre prenom" aria-describedby="prenom" value="<?= $_SESSION['prenom']?>">
+          <span >Prénom</span>
+          <span class="error" role="alert" id="lastname"> </span>
+        </div>
+        <div class="inputBox w50">
+          <input type="email" name="email" required aria-required="true" aria-label="Entrer votre email" aria-describedby="email" value="<?= $_SESSION['email']?>">
+          <span>Adresse Email</span>
+          <span class = "error" role="alert" id="email"></span>
+        </div>
+        <div class="inputBox w50">
+          <input type="tel"  name="Telephone" required 
+           aria-required="true" aria-label="Entrer votre numero de telephone" aria-describedby="Telephone" value="<?= $_SESSION['tel']?>">
+          <span>Téléphone</span>
+          <span class = "error" role="alert" id="mobilenumber"></span>
+        </div>
+        <div class="inputBox w100">
+          <textarea name="message" required aria-required="true" aria-label="Votre message pour le feedback" aria-describedby="message"></textarea>
+          <span>Ecrire votre message Ici</span>
+          <span class = "error" role="alert" id="message"></span>
+        </div>
+        <div class="inputBox w100">
+          <input type="submit" value="Send" name="send_feedback">
+        </div>
+ 
+      </div>
+      </form> 
+
+      
+    </div>
+    </div>
+    </div>
+
+
+    <!-- <div class="stay-update">STAY UPDATED</div> -->
+  </div>
+
+
+  <section class="faq-container" data-aos="fade-up">
+    <div class="slider2">
+      <div class="slide2-track">
+          <div class="slide2"><img src="img/img7.avif" alt=""></div>
+          <div class="slide2"><img src="img/img8.webp" alt=""></div>
+          <div class="slide2"><img src="img/img9.jpg" alt=""></div>
+          <div class="slide2"><img src="img/img10.jpg" alt=""></div>
+          <div class="slide2"><img src="img/img11.jpg" alt=""></div>
+          <!-- Doublures -->
+          <div class="slide2"><img src="img/img7.avif" alt=""></div>
+          <div class="slide2"><img src="img/img8.webp" alt=""></div>
+          <div class="slide2"><img src="img/img9.jpg" alt=""></div>
+          <div class="slide2"><img src="img/img10.jpg" alt=""></div>
+          <div class="slide2"><img src="img/img11.jpg" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <div class="contact" data-aos="fade-down">
+
+    <ul>
+      <li class="heading">Mohamed Aziz Maddeh</li>
+
+      <li><a href="tel:95768xyza">Ph:95768xyza</a></li>
+      <li><a href="mailto:hello@acelibrary.com" target="_blank">E:hello@acelibrary.com</a></li>
+      <li><a href="https://www.linkedin.com/in/sauravmukherjee44/" target="_blank"> Linkedin</a></li>
+
+
+      <li><a href="https://github.com/SauravMukherjee44" target="github">Github</a></li>
+      <li><a href="https://twitter.com/mesourav44" target="twitter"> Twitter</a></li>
+      <li><a href="https://www.youtube.com/channel/UCYGVtIgQIAChKBWBmChxzJw" target="YouTube">YouTube</a></li>
+    </ul>
+    <ul>
+      <li class="heading">Amine Added</li>
+      <li><a href="#">Our Story</a></li>
+      <li><a href="./public/privacy-policy.html">Privacy Policy</a></li>
+      <li><a href="#">Refund Policy</a></li>
+      <li><a href="#">Terms Of use</a> </li>
+      <li><a href="#">Accessibility</a></li>
+      <li><a href="#">Publishing process</a> </li>
+    </ul>
+    <ul>
+      <li class="heading">Rayen Benzid</li>
+      <li><a href="public/contact us .html">Contact us</a> </li>
+      <li><a href="./public/terms&conditions.html">Terms and conditions</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#">Careers</a></li>
+      <li><a href="#">Information</a></li>
+    </ul>
+    <ul>
+      <li class="heading">Ahmed Khalil Jaafar</li>
+      <li><a href="public/contact us .html">Contact us</a> </li>
+      <li><a href="./public/terms&conditions.html">Terms and conditions</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#">Careers</a></li>
+      <li><a href="#">Information</a></li>
+    </ul>
+
+  </div>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+  <div>
+    <footer>
+      <div class="footer-wrapper">
+        <div class="icons">
+          <ul>
+            <li>
+              <a title="LinkedIn" target="_blank" href="https://www.linkedin.com/in/sauravmukherjee44/" aria-label="Follow us on Linkedin" rel="noopener noreferrer">
+                <i class="fab fa-linkedin-in icon"></i>
+              </a>
+            </li>
+            <li>
+              <a title="GitHub" target="_blank" href="https://github.com/SauravMukherjee44/" aria-label= "Follow us on Github" rel="noopener noreferrer">
+                <i class="fab fa-github icon"></i>
+              </a>
+            </li>
+            <li>
+              <a title="Twitter" target="_blank" href="https://twitter.com/mesourav44/" aria-label= "Follow us on Twitter" rel="noopener noreferrer">
+                <i class="fab fa-twitter icon"></i>
+              </a>
+            </li>
+            <li>
+              <a title="YouTube" target="_blank" href="https://bit.ly/CodeINYouTube" aria-label= "Follow us on Youtube" rel="noopener noreferrer">
+                <i class="fab fa-youtube icon"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+
+          <p>©<span id="footer-year"></span> Copyright AEC Library</p>
+        </div>
+        <!--
+        <div class="ml-auto">
+          <p>
+            <a href="./public/contact us .html" style="color: antiquewhite;"> </a>
+            &emsp;&emsp;
+          </p>
+
+        </div>
+        -->
+      </div>
+    </footer>
+  </div>
+  </div>
+
+  <!--scroll featuring-->
+
+  <!--scrolling feature end here-->
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="./assets/js/script.js"></script>
+
+  <!-- Go to Top Button-->
+
+
+
+
+
+
+
+
+<!--ici-->
+  <script>
+    AOS.init({
+      offset: 400, // offset (in px) from the original trigger point
+      delay: 0, // values from 0 to 3000, with step 50ms
+      duration: 1000 // values from 0 to 3000, with step 50ms
+    });
+  </script>
+  
+
+
+  <!-- Footer Year Calculator -->
+
+  <!-- IssueDate - not Allowing beyond today -->
+
+
+<!--issue form validation-->
+
+</body>
+
+
+</html>

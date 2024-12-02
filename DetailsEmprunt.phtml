@@ -1,0 +1,79 @@
+<!-- ======= Styles ====== -->
+<link rel="stylesheet" href="assets/css/style.css">
+
+<!-- ================ Order Details List ================= -->
+<div class="details">
+    <div class="recentOrders" style="min-height: 200px;">
+        <div class="cardHeader">
+            <h2>Liste des emprunts</h2>
+        </div>
+        <!-- ================ LES TABLEAUX ICI ================= -->
+        <table>
+            <thead>
+                <tr>
+                    <td style="text-align: left;">Nom adhérent</td>
+                    <td style="text-align: left;">Prenom adhérent</td>
+                    <td style="text-align: left;">N°téléphone adherent</td>
+                    <td style="text-align: left;">Titre ouvrage</td>
+                    <td style="text-align: left;">Frais d'emprunt</td>
+                    <td style="text-align: left;">Date d'emprunt</td>
+                    <td style="text-align: left;">Date de retour</td>
+                </tr>
+            </thead>
+            <tbody id="contenu">
+                <?php
+                $currentDate = new DateTime(); // Date actuelle
+                foreach ($listeEmprunts as $emprunt):
+                    $dateRetour = new DateTime($emprunt['dateRetour']); // Date de retour
+                    $isLate = $dateRetour < $currentDate; // Vérifier si la date est dépassée
+                ?>
+                    <tr>
+                        <td style="text-align: left;"><?= htmlspecialchars($emprunt['nom']) ?></td>
+                        <td style="text-align: left;"><?= htmlspecialchars($emprunt['prenom']) ?></td>
+                        <td style="text-align: left;"><?= htmlspecialchars($emprunt['tel']) ?></td>
+                        <td style="text-align: left;"><?= htmlspecialchars($emprunt['titre']) ?></td>
+                        <td style="text-align: left;"><?= htmlspecialchars($emprunt['frais']) ?></td>
+                        <td style="text-align: left;"><?= htmlspecialchars($emprunt['dateEmp']) ?></td>
+                        <td style="text-align: left; <?= $isLate ? 'background-color: red;' : '' ?>">
+                            <?= htmlspecialchars($emprunt['dateRetour']) ?>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+
+
+
+    </div>
+
+</div>
+
+
+<script>
+    //Recherche
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function() {
+        let searchTerm = this.value.toLowerCase(); // Obtenir la valeur du champ de recherche
+        let rows = document.querySelectorAll('#contenu tr'); // Obtenir toutes les lignes du tableau
+
+        rows.forEach(function(row) {
+            let cells = row.getElementsByTagName('td');
+            let found = false;
+
+            // Vérifier chaque cellule de la ligne
+            for (let i = 0; i < cells.length; i++) {
+                if (cells[i].innerText.toLowerCase().includes(searchTerm)) {
+                    found = true;
+                    break; // Si on trouve une correspondance, on sort de la boucle
+                }
+            }
+
+            // Afficher ou cacher la ligne en fonction du résultat
+            if (found) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+</script>

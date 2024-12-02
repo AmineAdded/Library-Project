@@ -42,6 +42,8 @@
     }
 </style>
 
+<<<<<<< HEAD
+=======
 <!-- =============== Navigation ================ -->
 <div class="container">
     <div class="navigation">
@@ -208,11 +210,16 @@
         </div>
 
         <!-- ================ Order Details List ================= -->
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
         <div class="details">
             <div class="recentOrders">
                 <div class="cardHeader">
                     <h2>Liste des ouvrages</h2>
+<<<<<<< HEAD
+                    <a href="AjoutOuvrage.php">
+=======
                     <a href="AjoutOuvrage.php?idAdmin=<?= $_GET['idAdmin'] ?>">
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
                         <button class="Btn">
                             <div class="sign">+</div>
 
@@ -228,7 +235,11 @@
                     <thead>
                         <tr>
                             <td>Photo de couverture</td>
+<<<<<<< HEAD
+                            <td style="text-align: left;">Titre</td>
+=======
                             <td>Titre</td>
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
                             <td>Auteur</td>
                             <td>Quantité</td>
                             <td>Catégorie</td>
@@ -238,8 +249,13 @@
                     <tbody id="contenu">
                         <?php foreach ($ouvrages as $ouvrage): ?>
                             <tr>
+<<<<<<< HEAD
+                                <td><img src="assets\imgs\<?= $ouvrage['picture'] ?>" class="ImgAdherent"></td>
+                                <td style="text-align: left;"><?= $ouvrage['titre'] ?></td>
+=======
                                 <td><img src="<?= $ouvrage['picture'] ?>" class="ImgAdherent"></td>
                                 <td><?= $ouvrage['titre'] ?></td>
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
                                 <td><?= $ouvrage['auteur'] ?></td>
                                 <td><?= $ouvrage['quantite'] ?></td>
                                 <td><?= $ouvrage['categorie'] ?></td>
@@ -247,8 +263,13 @@
 
                                 <td>
                                     <div class="ButtonsUpSupp">
+<<<<<<< HEAD
+                                        <a href="UpdateOuvrage.php?idBook=<?= $ouvrage['idBook'] ?>" class="btn-update"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="DeleteOuvrage.php?idBook=<?= $ouvrage['idBook'] ?>" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
+=======
                                         <a href="UpdateOuvrage.php?idBook=<?= $ouvrage['idBook'] ?>&idAdmin=<?= $_GET['idAdmin'] ?>" class="btn-update"><i class="fa-solid fa-pen-to-square"></i></a>
                                         <a href="DeleteOuvrage.php?idBook=<?= $ouvrage['idBook'] ?>&idAdmin=<?= $_GET['idAdmin'] ?>" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
                                     </div>
                                 </td>
                             </tr>
@@ -258,8 +279,12 @@
             </div>
 
         </div>
+<<<<<<< HEAD
+
+=======
     </div>
 </div>
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
 
 <!-- Logout Modal -->
 <div id="logoutModal" class="modal">
@@ -272,6 +297,8 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
+=======
 <style>
     /* Modal Style */
     .modal {
@@ -382,6 +409,7 @@
         }
     });
 </script>
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
 
 <!-- =========== Scripts =========  -->
 <script src="assets/js/main.js"></script>
@@ -390,6 +418,35 @@
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
+<<<<<<< HEAD
+
+<script>
+    //Recherche
+    document.getElementById('searchInput').addEventListener('input', function() {
+        let searchTerm = this.value.toLowerCase();  // Obtenir la valeur du champ de recherche
+        let rows = document.querySelectorAll('#contenu tr');  // Obtenir toutes les lignes du tableau
+
+        rows.forEach(function(row) {
+            let cells = row.getElementsByTagName('td');
+            let found = false;
+
+            // Vérifier chaque cellule de la ligne
+            for (let i = 0; i < cells.length; i++) {
+                if (cells[i].innerText.toLowerCase().includes(searchTerm)) {
+                    found = true;
+                    break;  // Si on trouve une correspondance, on sort de la boucle
+                }
+            }
+
+            // Afficher ou cacher la ligne en fonction du résultat
+            if (found) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+=======
 <script>
     // Fonction pour gérer le menu et sous-menu
     function elm(x) {
@@ -430,4 +487,5 @@
             x.style.display = 'none';
         }
     }
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
 </script>

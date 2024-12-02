@@ -41,6 +41,8 @@
         margin-right: 5px;
     }
 </style>
+<<<<<<< HEAD
+=======
 <!-- =============== Navigation ================ -->
 <div class="container">
     <div class="navigation">
@@ -205,6 +207,7 @@
                 </div>
             </div>
         </div>
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
 
         <!-- ================ Order Details List ================= -->
         <div class="details">
@@ -216,14 +219,29 @@
                 <table>
                     <thead>
                         <tr>
+<<<<<<< HEAD
+                            <td>Username</td>
+                            <td style="text-align: left;">Commentaire</td>
+                            <td>Id Adherent</td>
+=======
                             <td>Nom</td>
                             <td>Prenom</td>
                             <td>Commentaire</td>
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
                         </tr>
                     </thead>
                     <tbody id="contenu">
                         <?php foreach ($feedbacks as $feedback): ?>
                             <tr>
+<<<<<<< HEAD
+                                <td><?= $feedback['username'] ?></td>
+                                <td style="text-align: left;"><?= $feedback['commentaire'] ?></td>
+                                <td><?= $feedback['id_ad'] ?></td>
+
+                                <td>
+                                    <div class="ButtonsUpSupp">
+                                        <a href="DeleteFeedback.php?id=<?= $feedback['id'] ?>" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
+=======
                                 <td><?= $feedback['nom'] ?></td>
                                 <td><?= $feedback['prenom'] ?></td>
                                 <td><?= $feedback['commentaire'] ?></td>
@@ -231,6 +249,7 @@
                                 <td>
                                     <div class="ButtonsUpSupp">
                                         <a href="DeleteFeedback.php?id=<?= $feedback['id'] ?>&idAdmin=<?= $_GET['idAdmin'] ?>" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
                                     </div>
                                 </td>
                             </tr>
@@ -241,6 +260,11 @@
             </div>
 
         </div>
+<<<<<<< HEAD
+
+
+
+=======
     </div>
 </div>
 
@@ -414,3 +438,4 @@
         }
     }
 </script>
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38

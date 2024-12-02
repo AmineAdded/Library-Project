@@ -1,6 +1,12 @@
 <?php
+<<<<<<< HEAD
+    session_start();
+    include 'DbConnect.php';
+    $username=$_SESSION['username'];
+=======
     include 'DbConnect.php';
     $idAdmin=$_GET['idAdmin'];
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
 
     if(!empty($_POST)){
         $idBook=$_POST['idBook'];
@@ -9,7 +15,10 @@
         $quantite=$_POST['quantite'];
         $categorie=$_POST['categorie'];
         $frais=$_POST['frais'];
+<<<<<<< HEAD
+=======
         $idAdmin=$_POST['idAdmin'];
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
         
         if (!empty($_FILES['picture']['name'])) {
             $uploadDir = 'assets/imgs/'; // Chemin de stockage des images
@@ -36,7 +45,11 @@
         $query=$pdo->prepare($sql);
         $query->execute();
 
+<<<<<<< HEAD
+        header('location:DetailsOuvrage.php');
+=======
         header('location:DetailsOuvrage.php?idAdmin='.$idAdmin);
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
         exit();
     }
 
@@ -45,6 +58,10 @@
     $ouvrages = $query->fetch();
 
     $title='Update Ouvrage';
+<<<<<<< HEAD
+    include 'UpdateOuvrage.phtml';
+=======
     $template='UpdateOuvrage';
     include 'layout.phtml';
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
 ?>

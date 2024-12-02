@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="title" content="AEC Library is a comprehensive library management system">
+  <meta name="description"
+    content="Designed for both large and small library systems, AEC Library is a comprehensive library management system. For managing circulation and stock, this is ideal for institutional, public, and digital libraries. In order to manage and automate the processing of even the largest of libraries, the AEC Library website was developed. According to the end user's requirements, the website is capable of managing Book Issues, Returns, and generating various Reports for Record-Keeping and Review purposes.">
+  <meta name="keywords" content="AEC, library systems, library, digital libraries, books">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <meta name="author" content="AEC LIBRARY">
+  <link rel="icon" href="./assets/logos/finalLogo.webp" type="image/x-icon" />
+  <title>Les livres</title>
+
+  <!-- Bootstrap CSS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="../assets/css/About.css" />
+  <link rel="stylesheet" href="../blogs.css" />
+
+  <!-- Adding new font -> Playfair-display -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
+
+  <!--Adding AOS in it-->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body class="body-style" data-aos="fade">
+  <div class="bubbles">
+    <!-- Bubble section -->
+  </div>
+
+  <div id="topBtn" title="Go to Top">
+    <a href="#"><span class="fa fa-angle-up"></span></a>
+  </div>
+
+  <!-- Navbar started -->
+  <header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <a class="navbar-brand ml-4" href="../index2.php"><img src="../assets/logos/finalLogo.webp" alt="AEC Library"
+        class="logo-img"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../index2.php"><i class="fas fa-home"></i> Acceuil <span
+              class="sr-only">(current)</span></a>
+                 </li>
+                <li class="nav-item"><a href="../QuiSommes-Nous.phtml" class="nav-link"> <i class="fas fa-book"></i> Qui Sommes-Nous? </a></li>
+                <li class="nav-item"><a href="../public/login.php" class="nav-link"> <i
+                    class="fas fa-sign-in-alt"></i> Se connecter </a></li>
+              <li class="nav-item"><a href="../public/inscription.php" class="nav-link"> <i
+                    class="fas fa-sign-in-alt"></i> Inscription </a></li>
+              <li class="nav-item">
+                <a href="../index2.php#propositions" class="nav-link">
+                  <i class="fas fa-address-book"></i> Propositions
+                </a>
+              </li>
+
+        
+      </ul>
+    </div>
+  </nav>
+  </header>
+
+  <!-- Navbar ended -->
+
+  <style>
+    .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+  </style>
+
+<!-- Blogs Coding Started -->
+<?php
+// Vérifiez si 'idBook' existe dans l'URL
+$idBook = isset($_GET['idBook']) ? $_GET['idBook'] : null;
+
+// Initialisez la variable $selectedBook
+$selectedBook = null;
+
+// Si un idBook est passé, trouvez le livre correspondant dans $_SESSION['books']
+if ($idBook) {
+    foreach ($_SESSION['books'] as $book) {
+        if ($book['idBook'] == $idBook) {
+            $selectedBook = $book;
+            break;
+        }
+    }
+}
+?>
+
+<main class="grid-container" data-aos="fade-up">
+    <?php foreach ($cls as $cl): ?>
+      <div class="card">
+        <img class="card-img-top" src="..\..\assets\imgs\<?= htmlspecialchars($cl['picture'], ENT_QUOTES, 'UTF-8'); ?>">
+        <div class="card-body">
+          <h5><?= htmlspecialchars($cl['titre'], ENT_QUOTES, 'UTF-8'); ?></h5>
+          <p><?= htmlspecialchars($cl['description'], ENT_QUOTES, 'UTF-8'); ?></p>
+          <a href="verification.php?idBook=<?= $cl['idBook']?>" target="_blank" rel="noopener noreferrer">Emprunter</a>
+        </div>
+      </div>
+    <?php endforeach; ?>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Session d'Emprunter</h2>
+            <?php if ($selectedBook): ?>
+                <p>Vous avez emprunté le livre : "<?= htmlspecialchars($selectedBook['titre'], ENT_QUOTES, 'UTF-8'); ?>"</p>
+            <?php else: ?>
+                <p>Le livre demandé n'a pas pu être trouvé.</p>
+            <?php endif; ?>
+        </div>
+    </div>
+
+    <script>
+      window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('modal') === 'true') {
+                document.getElementById("myModal").style.display = "block";
+            }
+
+            var modal = document.getElementById("myModal");
+            var span = document.getElementsByClassName("close")[0];
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        };
+    </script>
+</main>
+
+
+
+
+
+
+  
+
+
+
+  <!-- <br><br><br> -->
+  <!-- <div class="card-columns">
+  <div class="card bg-light">
+    <img class="card-img-top" src="https://miro.medium.com/max/1400/1*7BTK0SupKxlyVJeu9T-rGw.jpeg" alt="Card image">
+  <div class="card-body">
+    <h5 style="color:red;"><b><u>Data Science</u></b></h5>
+										<hr>
+    <p>Most people when asked about what they want to achieve or pursue in the field of Computer Science and Technology they basically say Data Science or Statistics.</p> 
+	<div style="display: flex;justify-content: end;">
+                        <a href="https://medium.com/@royaman644/data-science-998eaf34f9a3" target="_blank_"><button class="blog-btn" style="background-color:black;color:white;width:150px;height:40px;">Read more</button></a>
+                    </div>
+  </div>
+  </div>
+  <div class="card bg-light">
+    <img class="card-img-top" src="https://blog.internshala.com/wp-content/uploads/2018/09/What-is-SQL-and-how-to-learn-it-Introduction-to-SQL-for-beginners-672x336.webp" alt="Card image">
+  <div class="card-body">
+    <h5 style="color:red;"><b><u>SQL Basics</u></b></h5>
+										<hr>
+    <p>Hands-On Beginner SQL Tutorial Analyzing Bike-Sharing. In this tutorial we’ll be working with a dataset from the bike-sharing service Hubway, which includes data on over 1.5 million trips made with the service.</p> 
+	<div style="display: flex;justify-content: end;">
+        <a href="https://www.dataquest.io/blog/sql-basics/" target="_blank_"><button class="blog-btn" style="background-color:black;color:white;width:150px;height:40px;">Read more</button></a>
+    </div>
+  </div>
+  </div>
+  <div class="card bg-light">
+    <img class="card-img-top" src="https://www.whizlabs.com/blog/wp-content/uploads/2019/12/Git_Fundamentals-1.webp" alt="Card image">
+  <div class="card-body">
+    <h5 style="color:red;"><b><u>Git Fundamentals – Understanding Git basics</u></b></h5>
+										<hr>
+    <p>Want to learn the basics of Git, it’s core features, and basic workflow to manage the source code of your projects.</p> 
+	<div style="display: flex;justify-content: end;">
+                        <a href="https://www.whizlabs.com/blog/git-tutorial-understanding-git-basics/" target="_blank_"><button class="blog-btn" style="background-color:black;color:white;width:150px;height:40px;">Read more</button></a>
+                    </div>
+  </div>
+  </div>
+  <div class="card bg-light">
+    <img class="card-img-top" src="https://anexia.com/blog/wp-content/uploads/2020/05/Blog_machine-learning_Teaser-1.webp" alt="Card image">
+  <div class="card-body">
+    <h5 style="color:red;"><b><u>Machine Learning For Beginner</u></b></h5>
+										<hr>
+    <p>The interest in this technology has increased by almost half in the last three years at Google Trends and is even ranked third among the most important IT topics.</p> 
+	<div style="display: flex;justify-content: end;">
+                        <a href="https://anexia.com/blog/en/machine-learning-for-beginners/" target="_blank_"><button class="blog-btn" style="background-color:black;color:white;width:150px;height:40px;">Read more</button></a>
+                    </div>
+  </div>
+  </div>
+  <div class="card bg-light">
+    <img class="card-img-top" src="https://codersera.com/blog/wp-content/uploads/2021/06/Open-Source-Projects-For-Beginners.jpeg" alt="Card image">
+  <div class="card-body">
+    <h5 style="color:red;"><b><u>Open Source Projects For Beginners</u></b></h5>
+										<hr>
+    <p>Open source projects as a great method to assimilate new techniques and master their skills and competence. An open-source software keeps its source code readily available to all users for the purpose of modification, inspection, and enhancement. </p> 
+	<div style="display: flex;justify-content: end;">
+                        <a href="https://codersera.com/blog/open-source-projects-for-beginners/" target="_blank_"><button class="blog-btn" style="background-color:black;color:white;width:150px;height:40px;">Read more</button></a>
+                    </div>
+					
+  </div>
+  </div>
+  
+  <div class="card bg-light">
+    <img class="card-img-top" src="https://res.cloudinary.com/boardinfinity/image/upload/t_blog_img/bi-websites/blog/11/BLOG-SHEET-3--46-.webp" alt="Card image">
+  <div class="card-body">
+    <h5 style="color:red;"><b><u>Interesting Computer Science Project Ideas For Beginners</u></b></h5>
+										<hr>
+    <p>In this article, we will discuss top computer science project ideas for beginners. We will discuss projects related to every field, you can choose any of them..</p> 
+	<div style="display: flex;justify-content: end;">
+                        <a href="https://www.boardinfinity.com/blog/interesting-computer-science-project-ideas-topics-for-beginners-2021/" target="_blank_"><button class="blog-btn" style="background-color:black;color:white;width:150px;height:40px;">Read more</button></a>
+                    </div>
+  </div>
+  </div>
+</div> -->
+
+  <!--<div class="boxed">
+            <div class="col">
+                <div class="blog-card">
+                    <h4><b>Git Series - Part I</b></h4>
+                    <img src="./images/blog images/blog 2.webp" />
+                    <br><h5>In this part , I will be covering how you can push your code to github from your local computer/laptop.</h5>
+                    <div style="display: flex;justify-content: end;">
+                        <a href="https://dev.to/siddhi244/git-series-part-i-8pg" target="_blank_"><button class="blog-btn">Read more</button></a>
+                    </div>
+                </div>
+            </div>
+            </div>
+			
+			 Blogs End -->
+  <br><br>
+
+  <footer>
+    <div class="footer-wrapper">
+      <div class="icons">
+
+        <ul>
+          <li>
+            <a title="LinkedIn" target="_blank" href="https://www.linkedin.com/in/sauravmukherjee44/" rel="noopener noreferrer" aria-label="Follow us on LinkedIn"><i
+                class="fab fa-linkedin-in icon"></i></a>
+          </li>
+          <li>
+            <a title="GitHub" target="_blank" href="https://github.com/SauravMukherjee44/" rel="noopener noreferrer" aria-label="Follow us on GitHub"> <i
+                class="fab fa-github icon"></i> </a>
+          </li>
+          <li>
+            <a title="Twitter" target="_blank" href="https://twitter.com/mesourav44/" rel="noopener noreferrer" aria-label="Follow us on Twitter"><i
+                class="fab fa-twitter icon"></i></a>
+          </li>
+          <li>
+            <a title="YouTube" target="_blank" href="https://bit.ly/CodeINYouTube" rel="noopener noreferrer" aria-label="Follow us on YouTube"><i
+                class="fab fa-youtube icon"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div>
+
+        <p>©<span id="footer-year"></span> Copyright AEC Library</p>
+      </div>
+    </div>
+  </footer>
+    
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <div id="topBtn" title="Navigate to Top Button">
+    <a href="#"><span class="fa fa-angle-up"></span></a>
+  </div>
+  
+</body>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init({
+    offset: 400, // offset (in px) from the original trigger pointt
+    delay: 0, // values from 0 to 3000, with step 50ms
+    duration: 1000 // values from 0 to 3000, with step 50ms
+  });
+</script>
+  <!-- Footer Year Calculator -->
+  <script>
+    var year = new Date().getFullYear();
+    document.getElementById("footer-year").innerHTML = year;
+  </script>
+  <!-- Navigate to Top Button  -->
+  <script>
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 40) {
+                $('#topBtn').css({
+                    "opacity": "1", "pointer-events": "auto"
+                });
+            } else {
+                $('#topBtn').css({
+                    "opacity": "0", "pointer-events": "none"
+                });
+            }
+        });
+  
+        $("#topBtn").click(function () {
+            $('html ,body').animate({ scrollTop: 0 }, 400);
+        });
+    });
+  </script>
+
+</html>

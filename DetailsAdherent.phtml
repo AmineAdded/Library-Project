@@ -41,6 +41,8 @@
         margin-right: 5px;
     }
 </style>
+<<<<<<< HEAD
+=======
 <!-- =============== Navigation ================ -->
 <div class="container">
     <div class="navigation">
@@ -206,12 +208,17 @@
             </div>
         </div>
 
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
         <!-- ================ Order Details List ================= -->
         <div class="details">
             <div class="recentOrders" style="min-height: 200px;">
                 <div class="cardHeader">
                     <h2>Liste des adhérents</h2>
+<<<<<<< HEAD
+                    <a href="AjoutAdherent.php">
+=======
                     <a href="AjoutAdherent.php?idAdmin=<?= $_GET['idAdmin'] ?>">
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
                         <button class="Btn">
                             <div class="sign">+</div>
 
@@ -223,17 +230,36 @@
                 <table>
                     <thead>
                         <tr>
+<<<<<<< HEAD
+                            <td style="text-align: left;">Profile</td>
+                            <td style="text-align: left;">Nom</td>
+                            <td style="text-align: left;">Prenom</td>
+                            <td style="text-align: left;">Email</td>
+                            <td style="text-align: left;">Téléphone</td>
+=======
                             <td>Profile</td>
                             <td>Nom</td>
                             <td>Prenom</td>
                             <td>Email</td>
                             <td>Téléphone</td>
                             <td>Mot de passe</td>
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
                         </tr>
                     </thead>
                     <tbody id="contenu">
                         <?php foreach ($adherents as $adherent): ?>
                             <tr>
+<<<<<<< HEAD
+                                <td><img src="assets\imgs\<?= $adherent['picture'] ?>" class="ImgAdherent"></td>
+                                <td style="text-align: left;"><?= $adherent['nom'] ?></td>
+                                <td style="text-align: left;"><?= $adherent['prenom'] ?></td>
+                                <td style="text-align: left;"><?= $adherent['email'] ?></td>
+                                <td style="text-align: left;"><?= $adherent['tel'] ?></td>
+                                <td>
+                                    <div class="ButtonsUpSupp">
+                                        <a href="UpdateAdherent.php?idAdherent=<?= $adherent['idAdherent'] ?>" class="btn-update"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="DeleteAdherent.php?idAdherent=<?= $adherent['idAdherent'] ?>" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
+=======
                                 <td><img src="<?= $adherent['picture'] ?>" class="ImgAdherent"></td>
                                 <td><?= $adherent['nom'] ?></td>
                                 <td><?= $adherent['prenom'] ?></td>
@@ -245,6 +271,7 @@
                                     <div class="ButtonsUpSupp">
                                         <a href="UpdateAdherent.php?idAdherent=<?= $adherent['idAdherent'] ?>&idAdmin=<?= $_GET['idAdmin'] ?>" class="btn-update"><i class="fa-solid fa-pen-to-square"></i></a>
                                         <a href="DeleteAdherent.php?idAdherent=<?= $adherent['idAdherent'] ?>&idAdmin=<?= $_GET['idAdmin'] ?>" class="btn-delete"><i class="fa-solid fa-trash"></i></a>
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
                                     </div>
                                 </td>
                             </tr>
@@ -255,6 +282,38 @@
             </div>
 
         </div>
+<<<<<<< HEAD
+
+
+<script>
+    //Recherche
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function() {
+        let searchTerm = this.value.toLowerCase();  // Obtenir la valeur du champ de recherche
+        let rows = document.querySelectorAll('#contenu tr');  // Obtenir toutes les lignes du tableau
+
+        rows.forEach(function(row) {
+            let cells = row.getElementsByTagName('td');
+            let found = false;
+
+            // Vérifier chaque cellule de la ligne
+            for (let i = 0; i < cells.length; i++) {
+                if (cells[i].innerText.toLowerCase().includes(searchTerm)) {
+                    found = true;
+                    break;  // Si on trouve une correspondance, on sort de la boucle
+                }
+            }
+
+            // Afficher ou cacher la ligne en fonction du résultat
+            if (found) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+</script>
+=======
     </div>
 </div>
 
@@ -428,3 +487,4 @@
         }
     }
 </script>
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38

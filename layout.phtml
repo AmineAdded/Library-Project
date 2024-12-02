@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,15 +10,514 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
+<<<<<<< HEAD
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+=======
     <!-- ======= Styles ====== -->   
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
     <!-- fontawesome icons -->
     <script src="https://kit.fontawesome.com/ea12e32343.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+<<<<<<< HEAD
+
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <!-- Afficher le nom et l'image du admin -->
+                <li>
+                    <div style="color: white; margin-left: 60px; font-size: 20px;" class="bienvenue">
+                        <img class='img-circle profile_img' height=120 width=120 src="assets\imgs\<?= $_SESSION['picture'] ?>">
+                        </br></br>
+                        <h3 class="bienv">Bienvenue <span style="text-align: center;position: relative;left: -20px;"> <?= $_SESSION['username'] ?> </span></h3>
+                    </div>
+                    <br><br>
+                </li>
+                <li>
+                    <a href="index.php">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Accueil</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="DetailsAdherent.php">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Adhérents</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="DetailsOuvrage.php">
+                        <span class="icon">
+                            <ion-icon name="book-outline"></ion-icon>
+                        </span>
+                        <span class="title">Ouvrages</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="DetailsEmprunt.php">
+                        <span class="icon">
+                            <ion-icon name="folder-open-outline"></ion-icon>
+                        </span>
+                        <span class="title">Emprunt</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Feedback.php">
+                        <span class="icon">
+                            <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+                        </span>
+                        <span class="title">Feedback</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Deconnecter.php" id="logoutLink">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Se déconnecter</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here" id="searchInput">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+
+                <!-- zone modal notification -->
+                <div id="notificationModal" class="modal">
+                    <div class="modal-content">
+                        <h3>Emprunts en retard</h3>
+                        <?php if ($resultRetard > 0): ?>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>User ID</th>
+                                        <th>Date d'emprunt</th>
+                                        <th>Durée</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($emprunts as $emprunt): ?>
+                                        <tr>
+                                            <td><?= htmlspecialchars($emprunt['id']) ?></td>
+                                            <td><?= htmlspecialchars($emprunt['userid']) ?></td>
+                                            <td><?= htmlspecialchars($emprunt['dateEmp']) ?></td>
+                                            <td><?= htmlspecialchars($emprunt['duree']) ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        <?php else: ?>
+                            <p class="no-data">Aucun emprunt en retard.</p>
+                        <?php endif; ?>
+                        <button id="closeModal" class="btn-close">Fermer</button>
+                    </div>
+                </div>
+                <style>
+                    /* Styling for the modal container */
+                    .modal-content {
+                        background: #ffffff;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                        padding: 20px;
+                        width: 90%;
+                        max-width: 600px;
+                        margin: auto;
+                        text-align: center;
+                    }
+
+                    /* Header styling */
+                    .modal-content h3 {
+                        font-size: 24px;
+                        color: #333;
+                        margin-bottom: 20px;
+                        font-weight: bold;
+                    }
+
+                    /* Table styling */
+                    .modal-content table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-bottom: 20px;
+                    }
+
+                    .modal-content table th,
+                    .modal-content table td {
+                        border: 1px solid #ddd;
+                        padding: 10px;
+                        text-align: left;
+                    }
+
+                    .modal-content table th {
+                        background-color: #f4f4f4;
+                        color: #333;
+                        font-weight: bold;
+                        font-size: 16px;
+                    }
+
+                    .modal-content table tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+
+                    .modal-content table tr:hover {
+                        background-color: #f1f1f1;
+                    }
+
+                    /* Message when no data */
+                    .no-data {
+                        font-size: 18px;
+                        color: #777;
+                        margin: 20px 0;
+                    }
+
+                    /* Button styling */
+                    .btn-close {
+                        display: inline-block;
+                        background-color: #007bff;
+                        color: #fff;
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 4px;
+                        font-size: 16px;
+                        cursor: pointer;
+                        transition: background-color 0.3s ease;
+                    }
+
+                    .btn-close:hover {
+                        background-color: #0056b3;
+                    }
+
+                    /* Responsive design */
+                    @media (max-width: 600px) {
+                        .modal-content {
+                            padding: 15px;
+                        }
+
+                        .modal-content table th,
+                        .modal-content table td {
+                            font-size: 14px;
+                        }
+
+                        .btn-close {
+                            font-size: 14px;
+                            padding: 8px 16px;
+                        }
+                    }
+                </style>
+
+                <!-- *********************** -->
+                <div>
+                    <button class="button" id="notificationButton">
+                        <svg class="bell" viewBox="0 0 448 512">
+                            <path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z">
+                            </path>
+                        </svg>
+                        <span>
+                            <?= $totalRetard > 0 ? $totalRetard . ' Retard(s)' : 'Notifications'; ?>
+                        </span>
+
+                        <div class="arrow">›</div>
+                        <div class="dot"></div>
+                    </button>
+                </div>
+
+                <div class="container1">
+                    <!-- BEGIN NAV -->
+                    <nav class="navTop row">
+                        <div class="menuIcon fl"><span class="fa fa-user"></span></div>
+                        <div class="account fr">
+                            <div class="name has-submenu">Admin<span class="fa fa-angle-down"></span></div>
+                            <ul class="accountLinks submenu">
+                                <li><a href="ChangerMotDePasse.php">Changer le mot de passe </a></li>
+                                <li><a href="Deconnecter.php" id="logoutLinkBoard">Déconnecter<span
+                                            class="fa fa-sign-out fr"></span></a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- ======================= Cards ================== -->
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers"><?= $result['total'] ?></div>
+                        <div class="cardName">Adhérents</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers"><?= $resultEmp['total'] ?></div>
+                        <div class="cardName">Livres empruntés</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="cart-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers"><?= $resultFeed['total'] ?></div>
+                        <div class="cardName">Commentaires</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers"><?= $resultRevenus['total'] ?></div>
+                        <div class="cardName">Revenus</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="cash-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================ Order Details List ================= -->
+            <div class="details">
+                <!-- Partie dynamique -->
+                <?php
+                include $template . '.phtml';
+                ?>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Modal -->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <h3>Confirmation de Déconnexion</h3>
+            <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
+            <div class="modal-buttons">
+                <button id="confirmLogout" class="btn-yes">Oui</button>
+                <button id="cancelLogout" class="btn-no">Non</button>
+            </div>
+        </div>
+    </div>
+    <style>
+        /* Modal Style */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            z-index: 999;
+            /* Above other elements */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Black background with opacity */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .modal-content h3 {
+            margin-top: 0;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .btn-yes {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-yes:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-no {
+            background-color: #95a5a6;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-no:hover {
+            background-color: #7f8c8d;
+        }
+    </style>
+    <script>
+        // Select modal elements
+        const logoutModal = document.getElementById('logoutModal');
+        const confirmLogout = document.getElementById('confirmLogout');
+        const cancelLogout = document.getElementById('cancelLogout');
+        const logoutLink = document.getElementById('logoutLink');
+        const logoutLinkBoard = document.getElementById('logoutLinkBoard');
+
+        // Open modal when clicking logout
+        logoutLink.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default link behavior
+            logoutModal.style.display = 'flex'; // Show modal
+        });
+
+        // Open modal when clicking logout
+        logoutLinkBoard.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default link behavior
+            logoutModal.style.display = 'flex'; // Show modal
+        });
+
+        // Close modal when clicking "Non"
+        cancelLogout.addEventListener('click', function() {
+            logoutModal.style.display = 'none';
+        });
+
+        // Confirm logout action
+        confirmLogout.addEventListener('click', function() {
+            window.location.href = logoutLink.href; // Redirect to logout page
+        });
+
+        // Confirm logout action
+        confirmLogout.addEventListener('click', function() {
+            window.location.href = logoutLinkBoard.href; // Redirect to logout page
+        });
+
+        // Close modal when clicking outside of modal content
+        window.addEventListener('click', function(e) {
+            if (e.target == logoutModal) {
+                logoutModal.style.display = 'none';
+            }
+        });
+    </script>
+
+    <!-- =========== Scripts =========  -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        // Fonction pour gérer le menu et sous-menu
+        function elm(x) {
+            var target = x.substring(1);
+            var type = x.charAt(0);
+            if (type == '#') {
+                return document.getElementById(target);
+            } else if (type == '.') {
+                return document.getElementsByClassName(target);
+            } else {
+                return document.getElementsByTagName(x);
+            }
+        }
+
+        // Gestion des sous-menus
+        if (elm(".has-submenu")) {
+            for (var i = 0, len = elm(".has-submenu").length; i < len; i++) {
+                elm(".has-submenu")[i].onclick = function(e) {
+                    e.stopPropagation();
+                    bascule(this.nextElementSibling);
+                }
+            }
+        }
+
+        // Gestion du clic sur l'icône du menu
+        if (elm(".menuIcon")) {
+            elm(".menuIcon")[0].onclick = function() {
+                elm(".container")[0].classList.toggle("is-click");
+            };
+        }
+
+        // Fonction pour basculer l'affichage des éléments
+        function bascule(x) {
+            var css = window.getComputedStyle(x, null);
+            if (css.getPropertyValue("display") == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+    </script>
+    <script>
+        const notificationButton = document.getElementById('notificationButton');
+        const notificationModal = document.getElementById('notificationModal');
+        const closeModal = document.getElementById('closeModal');
+
+        // Ouvrir le modal
+        notificationButton.addEventListener('click', () => {
+            notificationModal.style.display = 'flex';
+        });
+
+        // Fermer le modal
+        closeModal.addEventListener('click', () => {
+            notificationModal.style.display = 'none';
+        });
+
+        // Fermer le modal en cliquant à l'extérieur
+        window.addEventListener('click', (event) => {
+            if (event.target == notificationModal) {
+                notificationModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+=======
     <!-- Partie dynamique -->
     <?php 
         include $template.'.phtml';
     ?>
 </body>
+>>>>>>> b4dec9dce4f59785422b808d75f4cefbf841eb38
 </html>
